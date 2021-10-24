@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 544732587
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7c75ef4ca82c970ade9bd2b9ff774158
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 939e20ecac0e95a3f7c5cfb3e57acb1d
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Low Poly Cyber Ninja Sword/Model/Materials/MAT_Sword_Cyber_Honesty.mat
+- Assets/Free medieval weapons/Materials/Wooden Bow_1_Wooden Bow_1_AlbedoTransparency.mat
+- Assets/Low Poly Cyber Ninja Sword/Model/Materials/MAT_Sword_Cyber_Ninja.mat
+- Assets/Free medieval weapons/Materials/Arrows_Arrows_AlbedoTransparency.mat
+- Assets/Oculus/SampleFramework/Core/CustomHands/Materials/Hands_solid.mat
+Dependencies:
+- C:/Users/takas/clone/clone/OVRAssetBundles/OVRMasterBundle/asset_png0

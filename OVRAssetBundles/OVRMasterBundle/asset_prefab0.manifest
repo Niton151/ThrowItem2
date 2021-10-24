@@ -1,0 +1,120 @@
+ManifestFileVersion: 0
+CRC: 4072862385
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 865bd945bd27efd67c34949bab74f816
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0e3446dc1d002bab39e7f887b3af0380
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 81
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8d7ffa5028c9c7748925a535e6cbccce, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5178bc8574ce2bf4388e787a2e2af326, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7e933e81d3c20c74ea6fdc708a67e3a5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: aab4c587457d86f4ca80582f946785ad, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ff25868ed41eab343936a3aee48fc74e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fd425c2d06f39bf4899d07c05d0f10eb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8348aca930e6c9045a479051bc958f21, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 66fd10923bcf9494681b58a660c188ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 79b7e65854ace8f44b05c52c6e824354, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5eb1944b6a946944dbca87d7a28f1878, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4f6a854d8c54ea409f7ae1c0ce184ea, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5392fc305fe987b419b376993252d12a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5fcb2df39c9c26841a60d61b9344c499, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/leftover.prefab
+- Assets/Prefabs/bow.prefab
+- Assets/Prefabs/metal.prefab
+- Assets/Prefabs/cloth.prefab
+- Assets/Oculus/SampleFramework/Core/CustomHands/CustomHandLeft.prefab
+- Assets/Oculus/SampleFramework/Core/CustomHands/Models/HandPoseDefaultPf.prefab
+- Assets/Low Poly Cyber Ninja Sword/Prefabs/Prefab_Sword_Cyber_Honesty.prefab
+- Assets/Oculus/SampleFramework/Core/CustomHands/CustomHandRight.prefab
+- Assets/Prefabs/GoalRange.prefab
+- Assets/Prefabs/rangeB.prefab
+- Assets/Prefabs/bow_recipe.prefab
+- Assets/Prefabs/bullet.prefab
+- Assets/Prefabs/glass.prefab
+- Assets/Prefabs/CraftSystem.prefab
+- Assets/Prefabs/plastic.prefab
+- Assets/Prefabs/SupervisorObj.prefab
+- Assets/Prefabs/PlayerUI.prefab
+- Assets/Free medieval weapons/Prefabs/Wooden Bow.prefab
+- Assets/Free medieval weapons/Prefabs/Arrow.prefab
+- Assets/Oculus/VR/Prefabs/OVRCameraRig.prefab
+- Assets/Prefabs/wood.prefab
+- Assets/Prefabs/enemy1.prefab
+- Assets/Prefabs/rangeA.prefab
+Dependencies:
+- C:/Users/takas/clone/clone/OVRAssetBundles/OVRMasterBundle/asset_controller0
+- C:/Users/takas/clone/clone/OVRAssetBundles/OVRMasterBundle/asset_fbx0
+- C:/Users/takas/clone/clone/OVRAssetBundles/OVRMasterBundle/asset_mat0

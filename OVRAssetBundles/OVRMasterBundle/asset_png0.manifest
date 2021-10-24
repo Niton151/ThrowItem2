@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 2649992695
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cc84c66918239d305116fe320c427142
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b0363f7088f9761414f730641bf9a24b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Free medieval weapons/Textures/Arrows_Arrows_MetallicSmoothness.png
+- Assets/Free medieval weapons/Textures/Wooden Bow_1_Wooden Bow_1_AO.png
+- Assets/Free medieval weapons/Textures/Arrows_Arrows_AlbedoTransparency.png
+- Assets/Low Poly Cyber Ninja Sword/Textures/Sword_Cyber_Honesty_Roughness.png
+- Assets/Free medieval weapons/Textures/Wooden Bow_1_Wooden Bow_1_AlbedoTransparency.png
+- Assets/Low Poly Cyber Ninja Sword/Textures/Sword_Cyber_Honesty_Normal.png
+- Assets/Free medieval weapons/Textures/Arrows_Arrows_Normal.png
+- Assets/Free medieval weapons/Textures/Wooden Bow_1_Wooden Bow_1_Normal.png
+- Assets/Low Poly Cyber Ninja Sword/Textures/Sword_Cyber_Honesty_MetallicSmoothness.png
+- Assets/Free medieval weapons/Textures/Arrows_Arrows_AO.png
+- Assets/Low Poly Cyber Ninja Sword/Textures/Sword_Cyber_Honesty_AlbedoTransparency.png
+- Assets/Free medieval weapons/Textures/Wooden Bow_1_Wooden Bow_1_MetallicSmoothness.png
+Dependencies: []
