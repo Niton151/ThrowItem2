@@ -12,14 +12,24 @@ public class EnemyControl : MonoBehaviour
     private float hp;
 
     [Header("移動用変数")]
-    [SerializeField]
     private float interval;
+
+    [SerializeField]
+    private float stableInterval;
+
+    [SerializeField]
+    private float cautionInterval;
 
     [SerializeField]
     private float maxSpeed;
 
+    private float smoothTime;
+
     [SerializeField]
-    private float smoothTime; //目的地までにかかる時間
+    private float stableSmoothTime; //目的地までにかかる時間
+
+    [SerializeField]
+    private float cautionSmoothTime;
 
     Vector3 velocity = Vector3.zero;
 
@@ -38,6 +48,7 @@ public class EnemyControl : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+    private bool isCaution = false;
 
     //ここから攻撃用変数
     [Header("攻撃用変数")]
@@ -56,13 +67,33 @@ public class EnemyControl : MonoBehaviour
     {
         this.hp = this.maxHp;
         moveTimer = interval - 1;
+        randomPos = RandomPosition.RandomPos(rangeA, rangeB);
     }
 
     
     void Update()
     {
-        //プレイヤーの方を向く
-       this.transform.LookAt(player.transform);
+        Debug.Log(Vector3.Distance(randomPos, player.transform.position));
+        if (isCaution)
+        {
+            smoothTime = cautionSmoothTime;
+            interval = cautionInterval;
+            //プレイヤーの方を向く
+            this.transform.LookAt(player.transform);
+
+            //ここから攻撃
+            attackTimer += Time.deltaTime;
+
+            if (!isMove && attackTimer >= normalInterval)
+            {
+                Attack();
+            }
+        }
+        else 
+        {
+            smoothTime = stableSmoothTime;
+            interval = stableInterval;
+        }
 
         //ランダムな位置に移動する
         moveTimer += Time.deltaTime;
@@ -74,21 +105,19 @@ public class EnemyControl : MonoBehaviour
 
         if(moveTimer >= interval)
         {
-            randomPos = RandomPosition.RandomPos(rangeA, rangeB);
+            while (true)
+            {
+                randomPos = RandomPosition.RandomPos(rangeA, rangeB);
+                if(Vector3.Distance(randomPos, player.transform.position) > 5f)
+                {
+                    break;
+                }
+            }
             isMove = true;
             moveTimer = 0;
         }
         lastPosition = transform.position;
-        transform.position = Vector3.SmoothDamp(transform.position, randomPos, ref velocity, smoothTime, maxSpeed);
-
-
-        //ここから攻撃
-        attackTimer += Time.deltaTime;
-
-        if (!isMove && attackTimer >= normalInterval)
-        {
-            Attack();
-        }
+        transform.position = Vector3.SmoothDamp(transform.position, randomPos, ref velocity, smoothTime, maxSpeed);  
     }
 
     public void EnemyAttacked(float damage)
@@ -102,7 +131,23 @@ public class EnemyControl : MonoBehaviour
 
     private void Attack()
     {
-        nomalMuzzle.GetComponent<LongRangeWeapon>().CreatBullet();
+        nomalMuzzle.GetComponent<EnemyLRW>().CreatBullet();
         attackTimer = 0;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isCaution = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isCaution = false;
+        }
     }
 }
