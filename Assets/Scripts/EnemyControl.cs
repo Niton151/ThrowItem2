@@ -52,8 +52,6 @@ public class EnemyControl : MonoBehaviour
 
     //‚±‚±‚©‚çUŒ‚—p•Ï”
     [Header("UŒ‚—p•Ï”")]
-    [SerializeField]
-    private float power;
 
     [SerializeField]
     private Transform nomalMuzzle;
@@ -73,21 +71,9 @@ public class EnemyControl : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(Vector3.Distance(randomPos, player.transform.position));
         if (isCaution)
         {
-            smoothTime = cautionSmoothTime;
-            interval = cautionInterval;
-            //ƒvƒŒƒCƒ„[‚Ì•û‚ðŒü‚­
-            this.transform.LookAt(player.transform);
-
-            //‚±‚±‚©‚çUŒ‚
-            attackTimer += Time.deltaTime;
-
-            if (!isMove && attackTimer >= normalInterval)
-            {
-                Attack();
-            }
+            AttackMode();
         }
         else 
         {
@@ -148,6 +134,22 @@ public class EnemyControl : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isCaution = false;
+        }
+    }
+
+    private void AttackMode()
+    {
+        smoothTime = cautionSmoothTime;
+        interval = cautionInterval;
+        //ƒvƒŒƒCƒ„[‚Ì•û‚ðŒü‚­
+        this.transform.LookAt(player.transform);
+
+        //‚±‚±‚©‚çUŒ‚
+        attackTimer += Time.deltaTime;
+
+        if (!isMove && attackTimer >= normalInterval)
+        {
+            Attack();
         }
     }
 }
