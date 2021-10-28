@@ -16,9 +16,6 @@ public class EnemyControl2 : MonoBehaviour
     private Vector3 randomPos;
 
     [SerializeField]
-    private Transform rangeA, rangeB; //ëŒäpÇ…ê›íu
-
-    [SerializeField]
     private GameObject player;
 
     private bool isCaution = false;
@@ -27,6 +24,9 @@ public class EnemyControl2 : MonoBehaviour
     private float waitTime;
 
     private float time;
+
+    [SerializeField]
+    private float moveRange = 5f;
 
     //Ç±Ç±Ç©ÇÁçUåÇópïœêî
     [Header("çUåÇópïœêî")]
@@ -41,7 +41,7 @@ public class EnemyControl2 : MonoBehaviour
     void Start()
     {
         this.hp = this.maxHp;
-        randomPos = RandomPosition.RandomPos(rangeA, rangeB);
+        randomPos = RandomPosition.RandomPos(moveRange);
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         GotoNextPoint();
@@ -121,8 +121,8 @@ public class EnemyControl2 : MonoBehaviour
         {
             anim.SetBool("isForward", false);
             agent.isStopped = false;
-            randomPos = RandomPosition.RandomPos(rangeA, rangeB);
-            agent.destination = randomPos;
+            randomPos = RandomPosition.RandomPos(moveRange);
+            agent.destination = this.transform.position + randomPos;
         }       
     }
 

@@ -50,6 +50,8 @@ public class EnemyControl : MonoBehaviour
 
     private bool isCaution = false;
 
+    private Vector3 latestPos;
+
     //ここから攻撃用変数
     [Header("攻撃用変数")]
 
@@ -68,33 +70,43 @@ public class EnemyControl : MonoBehaviour
         randomPos = RandomPosition.RandomPos(rangeA, rangeB);
     }
 
-    
+
     void Update()
     {
         if (isCaution)
         {
             AttackMode();
         }
-        else 
+        else
         {
             smoothTime = stableSmoothTime;
             interval = stableInterval;
+            Vector3 diff = transform.position - latestPos;   //前回からどこに進んだかをベクトルで取得
+            latestPos = transform.position;  //前回のPositionの更新
+
+            //ベクトルの大きさが0.01以上の時に向きを変える処理をする
+            if (diff.magnitude > 0.01f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(diff); //向きを変更する
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5);
+            }
         }
+
 
         //ランダムな位置に移動する
         moveTimer += Time.deltaTime;
 
-        if (lastPosition == transform.position && isMove == true) 
+        if (lastPosition == transform.position && isMove == true)
         {
             isMove = false;
         }
 
-        if(moveTimer >= interval)
+        if (moveTimer >= interval)
         {
             while (true)
             {
                 randomPos = RandomPosition.RandomPos(rangeA, rangeB);
-                if(Vector3.Distance(randomPos, player.transform.position) > 5f)
+                if (Vector3.Distance(randomPos, player.transform.position) > 5f)
                 {
                     break;
                 }
@@ -103,7 +115,7 @@ public class EnemyControl : MonoBehaviour
             moveTimer = 0;
         }
         lastPosition = transform.position;
-        transform.position = Vector3.SmoothDamp(transform.position, randomPos, ref velocity, smoothTime, maxSpeed);  
+        transform.position = Vector3.SmoothDamp(transform.position, randomPos, ref velocity, smoothTime, maxSpeed);
     }
 
     public void EnemyAttacked(float damage)

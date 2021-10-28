@@ -28,4 +28,12 @@ public class RandomPosition : MonoBehaviour
     {
         return list[Random.Range(0, list.Count)];
     }
+
+    public static Vector3 RandomPos(float radius)
+    {
+        float randomX = Random.Range(-radius, radius);
+        float randomY = Random.Range(-radius, radius);
+        float randomZ = Random.Range(-radius, radius);
+        return new Vector3(randomX, randomY, randomZ);
+    }
 }

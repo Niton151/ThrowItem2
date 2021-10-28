@@ -13,15 +13,21 @@ public class TeleportGrenade : MonoBehaviour
 
     private bool isRunning;
 
-    private float timer;
+    private float timer = 0;
 
-    private float runTime;
+    private float runTime = 0.9f;
 
     [SerializeField]
     private Transform basePos;
 
     [SerializeField]
+    private Transform craftPos;
+
+    [SerializeField]
     private GameObject blackHole;
+
+    [SerializeField]
+    private GameObject core;
 
     void Start()
     {
@@ -34,9 +40,13 @@ public class TeleportGrenade : MonoBehaviour
         if (isRunning)
         {
             timer += Time.deltaTime;
-            if(timer >= runTime && grabbable.grabbedBy)
+            if(timer >= runTime * 100)
             {
-                ReturnBase();
+                TeleportItems();
+                if (grabbable.grabbedBy)
+                {
+                    ReturnBase();
+                }
             }
         }   
     }
@@ -45,11 +55,11 @@ public class TeleportGrenade : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            Teleport();
+            TeleportPlayer();
         }
     }
 
-    private void Teleport()
+    private void TeleportPlayer()
     {
         rb.isKinematic = true;
         player.transform.position = this.transform.position;
@@ -62,8 +72,28 @@ public class TeleportGrenade : MonoBehaviour
         this.transform.position = basePos.position;
         player.transform.position = basePos.position;
         rb.isKinematic = false;
-        isRunning = false;
         timer = 0;
+        core.SetActive(false);
         blackHole.SetActive(false);
+    }
+
+    private void TeleportItems()
+    {
+        isRunning = false;  
+    }
+
+    public float GetRunTime()
+    {
+        return runTime;
+    }
+
+    public Transform GetCraftPos()
+    {
+        return craftPos;
+    }
+
+    public GameObject GetCoreObj()
+    {
+        return core;
     }
 }
