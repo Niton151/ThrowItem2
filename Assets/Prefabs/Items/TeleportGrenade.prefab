@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2ec73a1ecdd1b4cabbb84f112a411f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 7363854473188171450, guid: c49d328bd0be72b428007e9a8f69fcc0, type: 3}
   basePos: {fileID: 0}
   craftPos: {fileID: 0}
   blackHole: {fileID: 1893894618702335295}

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TeleportGrenade : MonoBehaviour
 {
+    public static int returnCount = 0;
+
     Rigidbody rb; 
 
     OVRGrabbable grabbable;
@@ -51,9 +53,9 @@ public class TeleportGrenade : MonoBehaviour
         }   
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (OVRInput.GetDown(OVRInput.RawButton.A) && collision.gameObject.CompareTag("Ground"))
         {
             TeleportPlayer();
         }

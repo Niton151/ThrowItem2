@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6228721300734848076
+--- !u!1 &2985681192496590915
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,56 +8,56 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3634780354318263319}
-  - component: {fileID: 1455913679174915705}
-  - component: {fileID: -2487239282349145729}
+  - component: {fileID: 8699231413225128351}
+  - component: {fileID: 8007907756221528290}
+  - component: {fileID: 298548874430146940}
   m_Layer: 0
-  m_Name: handgun_recipe
+  m_Name: grenade_recipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3634780354318263319
+--- !u!4 &8699231413225128351
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6228721300734848076}
+  m_GameObject: {fileID: 2985681192496590915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3636763, y: -1.50568, z: 4.9198165}
+  m_LocalPosition: {x: 196.58089, y: 86.87696, z: 128.95277}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1455913679174915705
+--- !u!114 &8007907756221528290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6228721300734848076}
+  m_GameObject: {fileID: 2985681192496590915}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8348aca930e6c9045a479051bc958f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredQuantity: 000000000a0000000a000000000000000000000000000000
-  craftItemName: "\u30CF\u30F3\u30C9\u30AC\u30F3"
-  craftItemImage: {fileID: 21300000, guid: 616abca1ddf703d4abbffcd8636cfa9c, type: 3}
-  craftItem: {fileID: 7551937238334131833, guid: d0216f9f57c5d3f4fb416122ef77f8c7,
+  requiredQuantity: 140000001e0000000a000000000000000000000000000000
+  craftItemName: "\u30B0\u30EC\u30CD\u30FC\u30C9"
+  craftItemImage: {fileID: 21300000, guid: 32f72b2cf6347be4e93d69c48e117816, type: 3}
+  craftItem: {fileID: 4321309595744484372, guid: 6ef2c84b90899434cac043c3ffde1b54,
     type: 3}
   craftUI: {fileID: 6903084565919174475, guid: 38ba88a88c921c74e92d426140a46b67, type: 3}
   craftSound: {fileID: 8300000, guid: 80524b67fb2202d4e84d94aea40d5921, type: 3}
---- !u!82 &-2487239282349145729
+--- !u!82 &298548874430146940
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6228721300734848076}
+  m_GameObject: {fileID: 2985681192496590915}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
