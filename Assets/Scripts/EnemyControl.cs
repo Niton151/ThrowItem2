@@ -63,6 +63,8 @@ public class EnemyControl : MonoBehaviour
 
     private float attackTimer;
 
+    public static bool isTimeStop;
+
     void Start()
     {
         this.hp = this.maxHp;
@@ -73,7 +75,7 @@ public class EnemyControl : MonoBehaviour
 
     void Update()
     {
-        if (isCaution)
+        if (isCaution && isTimeStop == false)
         {
             AttackMode();
         }

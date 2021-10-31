@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TeleportGrenade : MonoBehaviour
 {
-    public static int returnCount = 0;
+    private static int returnBaseCount = 0;
 
     Rigidbody rb; 
 
@@ -31,6 +31,8 @@ public class TeleportGrenade : MonoBehaviour
     [SerializeField]
     private GameObject core;
 
+    private bool isGround = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -55,17 +57,23 @@ public class TeleportGrenade : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (OVRInput.GetDown(OVRInput.RawButton.A) && collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            TeleportPlayer();
+            Tutorial.IntoIsGround(true);
+            if (OVRInput.GetDown(OVRInput.RawButton.B) || Input.GetKeyDown(KeyCode.Space))
+            {
+                TeleportPlayer();
+            }
         }
     }
 
     private void TeleportPlayer()
     {
-        rb.isKinematic = true;
         player.transform.position = this.transform.position;
+        rb.isKinematic = true;
+        this.transform.rotation = Quaternion.Euler(Vector3.zero);
         isRunning = true;
+        Tutorial.IntoIsRunning(isRunning);
         blackHole.SetActive(true);
     }
 
@@ -75,13 +83,16 @@ public class TeleportGrenade : MonoBehaviour
         player.transform.position = basePos.position;
         rb.isKinematic = false;
         timer = 0;
+        returnBaseCount++;
+        Tutorial.IntoReturnCount(returnBaseCount);
         core.SetActive(false);
         blackHole.SetActive(false);
     }
 
     private void TeleportItems()
     {
-        isRunning = false;  
+        isRunning = false;
+        Tutorial.IntoIsRunning(isRunning);
     }
 
     public float GetRunTime()

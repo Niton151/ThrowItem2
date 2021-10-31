@@ -50,7 +50,7 @@ public class EnemyControl2 : MonoBehaviour
 
     void Update()
     {
-        if (isCaution)
+        if (isCaution && EnemyControl.isTimeStop == false)
         {
             AttackMode();
         }
