@@ -33,10 +33,12 @@ public class CraftSpaceTeleport : MonoBehaviour
         {
             if (BaseToCraft)
             {
+                Tutorial.IntoIsCraftTell(true);
                 player.transform.position = craftPos.position;
             }
             else
             {
+                Tutorial.IntoIsReturnBase(true);
                 player.transform.position = basePos.position;
             }
         }

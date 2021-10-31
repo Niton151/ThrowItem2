@@ -36,7 +36,6 @@ public class Tutorial : MonoBehaviour
         "ブラックホールはあなたの真上に生成されていきます",
         "早速デコンの反応が近づいています",
         "持っている剣を振って戦いましょう",
-        "",
         //HP説明
         //戦闘
 
@@ -112,9 +111,23 @@ public class Tutorial : MonoBehaviour
     [SerializeField]
     private GameObject Lhand;
 
+    [SerializeField]
+    private GameObject player;
+
+    [SerializeField]
+    private GameObject tellGre;
+
     private static bool isGround;
 
     private static bool isRunning;
+
+    private static bool isBase;
+
+    private static bool isCraftTell;
+
+    private static bool isCraftSyringe;
+
+    private static bool isReturnBase;
 
     void Start()
     {
@@ -132,7 +145,7 @@ public class Tutorial : MonoBehaviour
                 CraftTutorial();
                 break;
             case 2:
-                GunCraft();
+                EndTutorial();
                 break;
             default:
                 break;
@@ -152,6 +165,7 @@ public class Tutorial : MonoBehaviour
             }
             else if (latestIndex == 15)
             {
+                tellGre.SetActive(true);
                 ActiveImage(5);
                 if (isGround == true)
                 {
@@ -180,15 +194,15 @@ public class Tutorial : MonoBehaviour
             {
                 canvas.SetActive(false);
                 EnemyControl.isTimeStop = false;
-                if(isRunning == false)
+                if (isRunning == false)
                 {
-                    canvas.SetActive(true);
                     GoMessage();
+                    canvas.SetActive(true);
                 }
             }
-            else if(latestIndex >= 22)
+            else if (latestIndex == 23)
             {
-                returnBaseCount = 1;
+                image.enabled = false;
             }
             else
             {
@@ -200,12 +214,98 @@ public class Tutorial : MonoBehaviour
 
     private void CraftTutorial()
     {
+        timer += Time.deltaTime;
+        if (timer >= interval)
+        {
+            text.text = messsage[latestIndex];
+            if(latestIndex == 26)
+            {
+                if(isCraftTell == true)
+                {
+                    GoMessage();
+                }
+            }
+            else if(latestIndex == 35)
+            {
+                ActiveImage(8);
+                interval = 10;
+            }
+            else if(latestIndex == 36)
+            {
+                canvas.SetActive(false);
+                if (isCraftSyringe)
+                {
+                    GoMessage();
+                    canvas.SetActive(true);
+                }
+            }
+            else if(latestIndex == 37)
+            {
+                ActiveImage(9);
+                var pc = player.GetComponent<PlayerControl>();
+                if (pc.GetPlayerHP() == pc.GetPlayerMaxHP())
+                {
+                    GoMessage();
+                }
+            }
+            else if(latestIndex == 38)
+            {
+                ActiveImage(10);
+                interval = 10;
+            }
+            else if(latestIndex == 39)
+            {
+                image.enabled = false;
+            }
+            else if(latestIndex == 41)
+            {
+                if (isReturnBase)
+                {
+                    GoMessage();
+                }
+            }
+            else if(latestIndex == 42)
+            {
+                if(isReturnBase == false)
+                {
+                    GoMessage();
+                }
+            }
+            else if(latestIndex == 46)
+            {
+                canvas.SetActive(false);
+                GoMessage();
+            }
 
+            else
+            {
+                image.enabled = false;
+                GoMessage();
+            }
+        }
     }
 
-    private void GunCraft()
+    private void EndTutorial()
     {
-
+        timer += Time.deltaTime;
+        if (timer >= interval)
+        {
+            text.text = messsage[latestIndex];
+            if(latestIndex == 47)
+            {
+                canvas.SetActive(true);
+                GoMessage();
+            }
+            else if(latestIndex == 51)
+            {
+                canvas.SetActive(false);
+            }
+            else
+            {
+                image.enabled = false;
+                GoMessage();
+            }
+        }
     }
 
     public static void IntoReturnCount(int i)
@@ -220,8 +320,27 @@ public class Tutorial : MonoBehaviour
 
     public static void IntoIsRunning(bool ir)
     {
-        Debug.Log(ir);
         isRunning = ir;
+    }
+
+    public static void IntoIsBase(bool ib)
+    {
+        isBase = ib;
+    }
+
+    public static void IntoIsCraftTell(bool ict)
+    {
+        isCraftTell = ict;
+    }
+
+    public static void IntoIsCraftSyringe(bool ics)
+    {
+        isCraftSyringe = ics;
+    }
+
+    public static void IntoIsReturnBase(bool irb)
+    {
+        isReturnBase = irb;
     }
 
     private void ActiveImage(int count)
@@ -233,7 +352,7 @@ public class Tutorial : MonoBehaviour
     private void GoMessage()
     {
         timer = 0;
-        interval = messsage[latestIndex].Length / 20;
+        interval = messsage[latestIndex].Length / 4;
         latestIndex++;
     }
 }

@@ -15,9 +15,11 @@ public class TeleportGrenade : MonoBehaviour
 
     private bool isRunning;
 
+    private bool isBase;
+
     private float timer = 0;
 
-    private float runTime = 0.9f;
+    private float runTime = 0.15f;
 
     [SerializeField]
     private Transform basePos;
@@ -41,13 +43,13 @@ public class TeleportGrenade : MonoBehaviour
 
     void Update()
     {
-        if (isRunning)
+        if (isBase == false)
         {
             timer += Time.deltaTime;
             if(timer >= runTime * 100)
             {
                 TeleportItems();
-                if (grabbable.grabbedBy)
+                if (grabbable.grabbedBy || Input.GetKeyDown(KeyCode.Space))
                 {
                     ReturnBase();
                 }
@@ -73,7 +75,9 @@ public class TeleportGrenade : MonoBehaviour
         rb.isKinematic = true;
         this.transform.rotation = Quaternion.Euler(Vector3.zero);
         isRunning = true;
+        isBase = false;
         Tutorial.IntoIsRunning(isRunning);
+        Tutorial.IntoIsBase(isBase);
         blackHole.SetActive(true);
     }
 
@@ -87,6 +91,8 @@ public class TeleportGrenade : MonoBehaviour
         Tutorial.IntoReturnCount(returnBaseCount);
         core.SetActive(false);
         blackHole.SetActive(false);
+        isBase = true;
+        Tutorial.IntoIsBase(isBase);
     }
 
     private void TeleportItems()
