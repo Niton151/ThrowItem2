@@ -19,7 +19,7 @@ public class TeleportGrenade : MonoBehaviour
 
     private float timer = 0;
 
-    private float runTime = 0.3f;
+    private float runTime = 0.9f;
 
     [SerializeField]
     private Transform basePos;
@@ -55,35 +55,32 @@ public class TeleportGrenade : MonoBehaviour
             if(timer >= runTime * 100)
             {
                 TeleportItems();
-                if (grabbable.grabbedBy || Input.GetKeyDown(KeyCode.Space))
+                if (OVRInput.GetDown(OVRInput.RawButton.B) || Input.GetKeyDown(KeyCode.Space))
                 {
-                    ReturnBase();
+                    ReturnBase(true);
                 }
             }
         }   
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
+        if(this.gameObject.transform.position.y <= 2)
         {
-            Debug.Log("n");
             rb.isKinematic = true;
-            this.transform.rotation = Quaternion.Euler(Vector3.zero);
-            itemSpawn.GetComponent<ItemSpawn>().Spawn();
-            enemySpawn.GetComponent<ItemSpawn>().Spawn();           
-        }  
-    }
-    private void OnTriggerStay(Collider collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
             Tutorial.IntoIsGround(true);
             if (OVRInput.GetDown(OVRInput.RawButton.B) || Input.GetKeyDown(KeyCode.Space))
             {
                 TeleportPlayer();
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            this.transform.rotation = Quaternion.Euler(Vector3.zero);
+            itemSpawn.GetComponent<ItemSpawn>().Spawn();
+            enemySpawn.GetComponent<ItemSpawn>().Spawn();           
+        }  
     }
 
     private void TeleportPlayer()
@@ -96,14 +93,17 @@ public class TeleportGrenade : MonoBehaviour
         blackHole.SetActive(true);
     }
 
-    private void ReturnBase()
+    public void ReturnBase(bool isClear)
     {
-        this.transform.position = basePos.position;
+        this.transform.position = basePos.position + new Vector3(0, 1, 0);
         player.transform.position = basePos.position;
         rb.isKinematic = false;
         timer = 0;
-        returnBaseCount++;
-        Tutorial.IntoReturnCount(returnBaseCount);
+        if (isClear)
+        {
+            returnBaseCount++;
+            Tutorial.IntoReturnCount(returnBaseCount);
+        }
         core.SetActive(false);
         blackHole.SetActive(false);
         isBase = true;

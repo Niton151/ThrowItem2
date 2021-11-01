@@ -73,12 +73,14 @@ public class Sword : MonoBehaviour
         if (Lhand.GetComponent<OVRGrabber>().grabbedObject != null && Lhand.GetComponent<OVRGrabber>().grabbedObject.gameObject == this.transform.parent.gameObject && other.gameObject.CompareTag("Enemy") && L_acc.magnitude > atackableSpeed)
         {
             other.GetComponent<EnemyControl>().EnemyAttacked(power);
+            other.GetComponent<EnemyControl2>().EnemyAttacked(power);
             audioSource.Play();
         }
 
         if (Rhand.GetComponent<OVRGrabber>().grabbedObject != null && Rhand.GetComponent<OVRGrabber>().grabbedObject.gameObject == this.transform.parent.gameObject && other.gameObject.CompareTag("Enemy") && R_acc.magnitude > atackableSpeed)
         {
             other.GetComponent<EnemyControl>().EnemyAttacked(power);
+            other.GetComponent<EnemyControl2>().EnemyAttacked(power);
             audioSource.Play();
         }
     }

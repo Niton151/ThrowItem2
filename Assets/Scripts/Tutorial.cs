@@ -353,7 +353,7 @@ public class Tutorial : MonoBehaviour
     private void GoMessage()
     {
         timer = 0;
-        interval = messsage[latestIndex].Length / 20;
+        interval = messsage[latestIndex].Length / 4;
         latestIndex++;
     }
 }

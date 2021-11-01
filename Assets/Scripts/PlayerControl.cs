@@ -25,6 +25,9 @@ public class PlayerControl : MonoBehaviour
 
     private AudioSource audioSource;
 
+    [SerializeField]
+    private GameObject tellGre;
+
     void Start()
     {
         audioSource = this.GetComponent<AudioSource>();
@@ -83,12 +86,18 @@ public class PlayerControl : MonoBehaviour
         hpSlider.value = hp / maxHp;
         if (this.hp <= 0)
         {
-            gameObject.SetActive(false);
+            PlayerDead();
         }
 
         if (hp >= maxHp)
         {
             hp = maxHp;
         }
+    }
+
+    private void PlayerDead()
+    {
+        tellGre.GetComponent<TeleportGrenade>().ReturnBase(false);
+        Tutorial.IntoIsRunning(false);
     }
 }
