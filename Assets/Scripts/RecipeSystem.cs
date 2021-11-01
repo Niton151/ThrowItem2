@@ -55,7 +55,7 @@ public class RecipeSystem : MonoBehaviour
     {      
         if (JudgeCraftable() == true) { 
             Instantiate(craftItem, new Vector3(0.0f, 1.0f, 0.0f), Quaternion.identity);
-            if(craftItem.name == "SyringeGrab")
+            if(craftItemName == "íçéÀäÌ")
             {
                 Tutorial.IntoIsCraftSyringe(true);
             }

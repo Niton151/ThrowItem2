@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
 {
     [SerializeField]
     private float maxHp;
-
+    [SerializeField]
     private float hp;
 
     [SerializeField]

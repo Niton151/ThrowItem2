@@ -45,7 +45,6 @@ public class EnemyControl : MonoBehaviour
 
     private Vector3 lastPosition;
 
-    [SerializeField]
     private GameObject player;
 
     private bool isCaution = false;
@@ -70,6 +69,7 @@ public class EnemyControl : MonoBehaviour
         this.hp = this.maxHp;
         moveTimer = interval - 1;
         randomPos = RandomPosition.RandomPos(rangeA, rangeB);
+        player = GameObject.Find("Player");
     }
 
 

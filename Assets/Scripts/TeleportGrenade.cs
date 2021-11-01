@@ -13,13 +13,13 @@ public class TeleportGrenade : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
-    private bool isRunning;
+    private bool isRunning = false;
 
-    private bool isBase;
+    private bool isBase = true;
 
     private float timer = 0;
 
-    private float runTime = 0.15f;
+    private float runTime = 0.3f;
 
     [SerializeField]
     private Transform basePos;
@@ -32,6 +32,12 @@ public class TeleportGrenade : MonoBehaviour
 
     [SerializeField]
     private GameObject core;
+
+    [SerializeField]
+    private GameObject itemSpawn;
+
+    [SerializeField]
+    private GameObject enemySpawn;
 
     private bool isGround = false;
 
@@ -57,7 +63,18 @@ public class TeleportGrenade : MonoBehaviour
         }   
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("n");
+            rb.isKinematic = true;
+            this.transform.rotation = Quaternion.Euler(Vector3.zero);
+            itemSpawn.GetComponent<ItemSpawn>().Spawn();
+            enemySpawn.GetComponent<ItemSpawn>().Spawn();           
+        }  
+    }
+    private void OnTriggerStay(Collider collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -72,8 +89,6 @@ public class TeleportGrenade : MonoBehaviour
     private void TeleportPlayer()
     {
         player.transform.position = this.transform.position;
-        rb.isKinematic = true;
-        this.transform.rotation = Quaternion.Euler(Vector3.zero);
         isRunning = true;
         isBase = false;
         Tutorial.IntoIsRunning(isRunning);

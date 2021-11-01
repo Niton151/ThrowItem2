@@ -15,7 +15,6 @@ public class EnemyControl2 : MonoBehaviour
 
     private Vector3 randomPos;
 
-    [SerializeField]
     private GameObject player;
 
     private bool isCaution = false;
@@ -45,6 +44,7 @@ public class EnemyControl2 : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         GotoNextPoint();
+        player = GameObject.Find("Player");
     }
 
 

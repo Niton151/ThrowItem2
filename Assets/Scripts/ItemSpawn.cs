@@ -4,38 +4,49 @@ using UnityEngine;
 
 public class ItemSpawn : MonoBehaviour
 {
-    private float timer = 0;
+    [SerializeField]
+    private float maxCount;
 
     [SerializeField]
-    private float interval;
+    private float addCount;
 
     [SerializeField]
     private List<GameObject> items;
 
     [SerializeField]
-    private Transform rangeA;
+    private float radius;
 
     [SerializeField]
-    private Transform rangeB;
+    private GameObject enemy;
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer >= interval)
+
+    }
+
+    public void Spawn()
+    {
+        for(int i = 0; i < maxCount; i++)
         {
-            Spawn();
-            timer = 0;
+            var rpos = this.transform.position + RandomPosition.RandomPos(radius);
+            Instantiate(RandomPosition.RandomInList(items), new Vector3(rpos.x, 10f, rpos.z), Quaternion.Euler(new Vector3(0, 0, Random.Range(-180f, 180f))));
         }
     }
 
-    private void Spawn()
+    void OnDrawGizmosSelected()
     {
-        Instantiate(RandomPosition.RandomInList(items), RandomPosition.RandomPos(rangeA, rangeB), Quaternion.Euler(new Vector3(0, 0, Random.Range(-180f, 180f))));
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    public void AddEnemy()
+    {
+        items.Add(enemy);
     }
 }

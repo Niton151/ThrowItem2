@@ -106,16 +106,13 @@ public class Tutorial : MonoBehaviour
     private Image image;
 
     [SerializeField]
-    private GameObject Rhand;
-
-    [SerializeField]
-    private GameObject Lhand;
-
-    [SerializeField]
     private GameObject player;
 
     [SerializeField]
     private GameObject tellGre;
+
+    [SerializeField]
+    private GameObject enemySpawn;
 
     private static bool isGround;
 
@@ -203,6 +200,7 @@ public class Tutorial : MonoBehaviour
             else if (latestIndex == 23)
             {
                 image.enabled = false;
+                enemySpawn.GetComponent<ItemSpawn>().AddEnemy();
             }
             else
             {
@@ -229,6 +227,7 @@ public class Tutorial : MonoBehaviour
             {
                 ActiveImage(8);
                 interval = 10;
+                latestIndex = 36;
             }
             else if(latestIndex == 36)
             {
@@ -252,10 +251,12 @@ public class Tutorial : MonoBehaviour
             {
                 ActiveImage(10);
                 interval = 10;
+                latestIndex = 39;
             }
             else if(latestIndex == 39)
             {
                 image.enabled = false;
+                latestIndex = 40;
             }
             else if(latestIndex == 41)
             {
@@ -352,7 +353,7 @@ public class Tutorial : MonoBehaviour
     private void GoMessage()
     {
         timer = 0;
-        interval = messsage[latestIndex].Length / 4;
+        interval = messsage[latestIndex].Length / 20;
         latestIndex++;
     }
 }
