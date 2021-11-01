@@ -123,8 +123,19 @@ public class RecipeSystem : MonoBehaviour
             if (reserveIndex.Contains(i))
             {
                 
-                texts[reserveIndex.IndexOf(i)].GetComponentInChildren<Text>().text = (Supervisor.Item)i + " " + haveQuantity[i] + "/" + requiredQuantity[i];
+                texts[reserveIndex.IndexOf(i)].GetComponentInChildren<Text>().text = ToString((Supervisor.Item)i) + " " + haveQuantity[i] + "/" + requiredQuantity[i];
             }
         }
+    }
+
+    public string ToString(Supervisor.Item item)
+    {
+        if (item == Supervisor.Item.wood) return "木";
+        else if (item == Supervisor.Item.metal) return "金属";
+        else if (item == Supervisor.Item.plastic) return "プラスチック";
+        else if (item == Supervisor.Item.glass) return "ガラス";
+        else if (item == Supervisor.Item.food) return "食料";
+        else if (item == Supervisor.Item.cloth) return "布";
+        else return base.ToString();
     }
 }

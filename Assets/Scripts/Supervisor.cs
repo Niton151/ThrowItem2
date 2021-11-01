@@ -18,7 +18,7 @@ public class Supervisor : MonoBehaviour
         metal,
         plastic,
         glass,
-        leftover,//食べ残し
+        food,//食べ残し
         cloth
     };
 
