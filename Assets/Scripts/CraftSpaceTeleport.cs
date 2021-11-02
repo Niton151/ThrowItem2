@@ -15,6 +15,12 @@ public class CraftSpaceTeleport : MonoBehaviour
 
     [SerializeField]
     private bool BaseToCraft;
+
+    [SerializeField]
+    private Material sunnySky;
+
+    [SerializeField]
+    private Material spaceSky;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +41,11 @@ public class CraftSpaceTeleport : MonoBehaviour
             {
                 Tutorial.IntoIsCraftTell(true);
                 player.transform.position = craftPos.position;
+                RenderSettings.skybox = spaceSky;
             }
             else
             {
+                RenderSettings.skybox = sunnySky;
                 Tutorial.IntoIsReturnBase(true);
                 player.transform.position = basePos.position;
             }
