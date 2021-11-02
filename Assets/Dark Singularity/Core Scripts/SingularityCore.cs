@@ -8,7 +8,7 @@ public class SingularityCore : MonoBehaviour
     //as this is much more performant than destroying the objects
     void OnTriggerStay (Collider other) {
         if(other.GetComponent<SingularityPullable>()){
-            other.gameObject.transform.position = craftPos.position;
+            other.gameObject.transform.position = craftPos.position + new Vector3(0, 1f, 0);
         }
     }
 

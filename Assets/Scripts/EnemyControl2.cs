@@ -9,6 +9,7 @@ public class EnemyControl2 : MonoBehaviour
     [SerializeField]
     private float maxHp;
 
+    [SerializeField]
     private float hp;
 
     [Header("ˆÚ“®—p•Ï”")]
@@ -26,6 +27,9 @@ public class EnemyControl2 : MonoBehaviour
 
     [SerializeField]
     private float moveRange = 5f;
+
+    [SerializeField]
+    private GameObject exprode;
 
     //‚±‚±‚©‚çUŒ‚—p•Ï”
     [Header("UŒ‚—p•Ï”")]
@@ -67,7 +71,7 @@ public class EnemyControl2 : MonoBehaviour
         this.hp -= damage;
         if (this.hp <= 0)
         {
-            Destroy(this.gameObject);
+            EnemyDead();
         }
     }
 
@@ -101,7 +105,7 @@ public class EnemyControl2 : MonoBehaviour
         anim.SetBool("isForward", true);
 
         //‚±‚±‚©‚çUŒ‚
-        if (Vector3.Distance(this.transform.position, player.transform.position) < 1f)
+        if (Vector3.Distance(this.transform.position, player.transform.position) < 1.5f)
         {
             anim.SetBool("isForward", false);
             agent.isStopped = true;
@@ -140,6 +144,12 @@ public class EnemyControl2 : MonoBehaviour
             GotoNextPoint();
             time = 0;
         }
+    }
+
+    private void EnemyDead()
+    {
+        exprode.SetActive(true);
+        Destroy(this.gameObject, 1f);
     }
 }
 

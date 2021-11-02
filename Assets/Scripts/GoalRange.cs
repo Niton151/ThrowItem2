@@ -18,10 +18,14 @@ public class GoalRange : MonoBehaviour
     [SerializeField]
     private AudioClip wrongSound;
 
+    [SerializeField]
+    private ParticleSystem[] goalEffect;
+
     void Start()
     {
         supervisor = GameObject.Find("SupervisorObj").GetComponent<Supervisor>();
         craftSystem = GameObject.Find("CraftSystem").GetComponent<CraftSystem>();
+        goalEffect = GetComponentsInChildren<ParticleSystem>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -39,6 +43,10 @@ public class GoalRange : MonoBehaviour
             craftSystem.AccessAllRecipes();
             Destroy(other.gameObject);
             audioSource.PlayOneShot(correctSound);
+            foreach(var p in goalEffect)
+            {
+                p.Play();
+            }
         }
 
         else

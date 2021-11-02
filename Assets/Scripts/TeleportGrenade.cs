@@ -8,8 +8,6 @@ public class TeleportGrenade : MonoBehaviour
 
     Rigidbody rb; 
 
-    OVRGrabbable grabbable;
-
     [SerializeField]
     private GameObject player;
 
@@ -39,12 +37,18 @@ public class TeleportGrenade : MonoBehaviour
     [SerializeField]
     private GameObject enemySpawn;
 
-    private bool isGround = false;
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip teleportSound;
+
+    [SerializeField]
+    private AudioClip holeSound;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        grabbable = GetComponent<OVRGrabbable>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -85,6 +89,7 @@ public class TeleportGrenade : MonoBehaviour
 
     private void TeleportPlayer()
     {
+        audioSource.PlayOneShot(teleportSound);
         player.transform.position = this.transform.position;
         isRunning = true;
         isBase = false;
@@ -95,6 +100,7 @@ public class TeleportGrenade : MonoBehaviour
 
     public void ReturnBase(bool isClear)
     {
+        audioSource.PlayOneShot(teleportSound);
         this.transform.position = basePos.position + new Vector3(0, 1, 0);
         player.transform.position = basePos.position;
         rb.isKinematic = false;
@@ -112,6 +118,7 @@ public class TeleportGrenade : MonoBehaviour
 
     private void TeleportItems()
     {
+        audioSource.PlayOneShot(holeSound);
         isRunning = false;
         Tutorial.IntoIsRunning(isRunning);
     }
