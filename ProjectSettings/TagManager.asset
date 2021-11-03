@@ -34,10 +34,10 @@ TagManager:
   - syringe
   - hand
   - item
-  - 
-  - 
-  - 
-  - 
+  - player
+  - ground
+  - enemy
+  - enemyBullet
   - 
   - 
   - 

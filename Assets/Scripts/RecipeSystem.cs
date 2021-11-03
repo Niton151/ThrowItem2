@@ -35,11 +35,17 @@ public class RecipeSystem : MonoBehaviour
 
     [SerializeField]
     private AudioClip craftSound;
+
+    [SerializeField]
+    private Transform craftPos;
+
+    private ParticleSystem[] craftEffect;
     
     void Start()
     {
         supervisor = GameObject.Find("SupervisorObj").GetComponent<Supervisor>();
         craftSystem = GameObject.Find("CraftSystem").GetComponent<CraftSystem>();
+        craftEffect = craftPos.gameObject.GetComponentsInChildren<ParticleSystem>();
         audioSource = GetComponent<AudioSource>();
         haveQuantity = supervisor.GetItemCount();
         CreatRecipe();
@@ -54,8 +60,13 @@ public class RecipeSystem : MonoBehaviour
     public void CraftItem()
     {      
         if (JudgeCraftable() == true) { 
-            Instantiate(craftItem, new Vector3(0.0f, 1.0f, 0.0f), Quaternion.identity);
-            if(craftItemName == "íçéÀäÌ")
+            Instantiate(craftItem, craftPos.position, Quaternion.identity);
+            foreach (var p in craftEffect)
+            {
+                p.Play();
+            }
+
+            if (craftItemName == "íçéÀäÌ")
             {
                 Tutorial.IntoIsCraftSyringe(true);
             }

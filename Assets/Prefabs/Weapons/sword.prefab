@@ -158,6 +158,8 @@ MonoBehaviour:
   power: 10
   Rhand: {fileID: 195418, guid: ba1fa4a8c66106b4988c88fe4b8e8502, type: 3}
   Lhand: {fileID: 143668, guid: e6ba3498ffa1e534b91a07264266e6b8, type: 3}
+  damageSound: {fileID: 8300000, guid: 2065dbf4c577f2144bf618cb8ead0d1d, type: 3}
+  swingSound: {fileID: 8300000, guid: 7dfefe11cb89919408462d62edc19192, type: 3}
 --- !u!1 &3224671321733578818
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +229,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!82 &170538427
 AudioSource:
   m_ObjectHideFlags: 0

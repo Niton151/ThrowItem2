@@ -66,7 +66,7 @@ public class TeleportGrenade : MonoBehaviour
             }
         }   
 
-        if(this.gameObject.transform.position.y <= 2)
+        if(this.gameObject.transform.position.y <= 4)
         {
             rb.isKinematic = true;
             Tutorial.IntoIsGround(true);

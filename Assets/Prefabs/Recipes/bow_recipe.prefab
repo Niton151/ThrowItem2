@@ -51,6 +51,8 @@ MonoBehaviour:
     type: 3}
   craftUI: {fileID: 6903084565919174475, guid: 38ba88a88c921c74e92d426140a46b67, type: 3}
   craftSound: {fileID: 8300000, guid: 80524b67fb2202d4e84d94aea40d5921, type: 3}
+  craftPos: {fileID: 7917931819088525727, guid: ef46fb58a0e488e4e805c979d3cfe479,
+    type: 3}
 --- !u!82 &-5671705562590530239
 AudioSource:
   m_ObjectHideFlags: 0

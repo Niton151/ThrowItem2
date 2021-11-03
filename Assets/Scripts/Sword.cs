@@ -44,18 +44,32 @@ public class Sword : MonoBehaviour
 
     void Update()
     {
-        //コメントアウトしてる部分は切ったときのコライダー管理
-        /*
-        if (Lhand.GetComponent<OVRGrabber>().grabbedObject != null && Lhand.GetComponent<OVRGrabber>().grabbedObject.gameObject.CompareTag("Sword") && -L_acc.y > atackableSpeed)
+        L_acc = OVRInput.GetLocalControllerVelocity(Lcontroller);
+        R_acc = OVRInput.GetLocalControllerVelocity(Rcontroller);
+        Debug.Log(R_acc);
+        if (L_acc.magnitude > atackableSpeed && Lhand.GetComponent<OVRGrabber>().grabbedObject != null && Lhand.GetComponent<OVRGrabber>().grabbedObject.gameObject == this.transform.parent.gameObject)
         {
-            col.isTrigger = true;
+            audioSource.PlayOneShot(swingSound);
         }
-        if (Rhand.GetComponent<OVRGrabber>().grabbedObject != null && Rhand.GetComponent<OVRGrabber>().grabbedObject.gameObject.CompareTag("Sword") && -R_acc.y > atackableSpeed)
+
+        if (R_acc.magnitude > atackableSpeed && Rhand.GetComponent<OVRGrabber>().grabbedObject != null && Rhand.GetComponent<OVRGrabber>().grabbedObject.gameObject == this.transform.parent.gameObject)
         {
-            col.isTrigger = true;
+            audioSource.PlayOneShot(swingSound);
         }
-        */
-    }
+            //コメントアウトしてる部分は切ったときのコライダー管理
+            /*
+            if (Lhand.GetComponent<OVRGrabber>().grabbedObject != null && Lhand.GetComponent<OVRGrabber>().grabbedObject.gameObject.CompareTag("Sword") && -L_acc.y > atackableSpeed)
+            {
+                col.isTrigger = true;
+            }
+            if (Rhand.GetComponent<OVRGrabber>().grabbedObject != null && Rhand.GetComponent<OVRGrabber>().grabbedObject.gameObject.CompareTag("Sword") && -R_acc.y > atackableSpeed)
+            {
+                col.isTrigger = true;
+            }
+            */
+
+
+        }
 
     /* private void OnCollisionStay(Collision collision)
      {
@@ -74,11 +88,8 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        L_acc = OVRInput.GetLocalControllerVelocity(Lcontroller);
-        R_acc = OVRInput.GetLocalControllerVelocity(Rcontroller);
         if (L_acc.magnitude > atackableSpeed && Lhand.GetComponent<OVRGrabber>().grabbedObject != null && Lhand.GetComponent<OVRGrabber>().grabbedObject.gameObject == this.transform.parent.gameObject)
         {
-            audioSource.PlayOneShot(swingSound);
             if (other.gameObject.CompareTag("Enemy"))
             {
                 other.GetComponent<EnemyControl>().EnemyAttacked(power);
@@ -90,7 +101,6 @@ public class Sword : MonoBehaviour
 
         if (R_acc.magnitude > atackableSpeed && Rhand.GetComponent<OVRGrabber>().grabbedObject != null && Rhand.GetComponent<OVRGrabber>().grabbedObject.gameObject == this.transform.parent.gameObject)
         {
-            audioSource.PlayOneShot(swingSound);
             if (other.gameObject.CompareTag("Enemy"))
             {
                 other.GetComponent<EnemyControl>().EnemyAttacked(power);
