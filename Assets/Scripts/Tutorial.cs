@@ -128,17 +128,27 @@ public class Tutorial : MonoBehaviour
 
     private bool isAddEnemy = false;
 
+    public bool isTutorial;
+
+    private bool isStart;
+
     [SerializeField]
-    private bool isTutorial;
+    private Toggle toggle;
 
     void Start()
     {
-        text.text = messsage[0];
+
     }
 
     void Update()
     {
-        if (isTutorial)
+        if (isStart == false)
+        {
+            canvas.SetActive(false);
+            isTutorial = toggle.isOn;
+        }
+
+        if (isTutorial && isStart == true)
         {
             switch (returnBaseCount)
             {
@@ -157,7 +167,7 @@ public class Tutorial : MonoBehaviour
         }
         else
         {
-            text.enabled = false;
+            canvas.SetActive(false);
             tellGre.SetActive(true);
             //ActiveImage(11);
             if (OVRInput.GetDown(OVRInput.RawButton.A))
@@ -177,7 +187,12 @@ public class Tutorial : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= interval)
         {
-            text.text = messsage[latestIndex];
+            if (latestIndex == 0)
+            {
+                canvas.SetActive(true);
+                GoMessage();
+            }
+            text.text = messsage[latestIndex];            
             if (4 <= latestIndex && latestIndex <= 8)
             {
                 ActiveImage(latestIndex - 4);
@@ -378,5 +393,11 @@ public class Tutorial : MonoBehaviour
         timer = 0;
         interval = messsage[latestIndex].Length / 4;
         latestIndex++;
+    }
+
+    public void GameStart()
+    {
+        isStart = true;
+        toggle.gameObject.transform.root.gameObject.SetActive(false);
     }
 }
