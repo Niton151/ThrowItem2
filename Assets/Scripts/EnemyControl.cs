@@ -69,7 +69,7 @@ public class EnemyControl : MonoBehaviour
         this.hp = this.maxHp;
         moveTimer = interval - 1;
         randomPos = RandomPosition.RandomPos(rangeA, rangeB);
-        player = GameObject.Find("Player");
+        player = GameObject.Find("PlayerCollider");
     }
 
 

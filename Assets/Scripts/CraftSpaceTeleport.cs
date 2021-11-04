@@ -40,14 +40,14 @@ public class CraftSpaceTeleport : MonoBehaviour
             if (BaseToCraft)
             {
                 Tutorial.IntoIsCraftTell(true);
-                player.transform.position = craftPos.position;
+                player.transform.position = craftPos.position + new Vector3(0, 0.5f, 0);
                 RenderSettings.skybox = spaceSky;
             }
             else
             {
                 RenderSettings.skybox = sunnySky;
                 Tutorial.IntoIsReturnBase(true);
-                player.transform.position = basePos.position;
+                player.transform.position = basePos.position + new Vector3(0, 0.5f, 0);
             }
         }
     }

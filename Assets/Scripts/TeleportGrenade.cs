@@ -58,7 +58,11 @@ public class TeleportGrenade : MonoBehaviour
             timer += Time.deltaTime;
             if(timer >= runTime * 100)
             {
-                TeleportItems();
+                if (isRunning)
+                {
+                    TeleportItems();
+                }
+
                 if (OVRInput.GetDown(OVRInput.RawButton.B) || Input.GetKeyDown(KeyCode.Space))
                 {
                     ReturnBase(true);
@@ -66,7 +70,7 @@ public class TeleportGrenade : MonoBehaviour
             }
         }   
 
-        if(this.gameObject.transform.position.y <= 4)
+        if(this.gameObject.transform.position.y <= 3)
         {
             rb.isKinematic = true;
             Tutorial.IntoIsGround(true);

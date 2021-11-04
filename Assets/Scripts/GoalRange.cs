@@ -41,7 +41,7 @@ public class GoalRange : MonoBehaviour
         {
             supervisor.GetItemCount()[(int)itemTag] += other.GetComponent<ThrowItem>().GetQuantity();
             craftSystem.AccessAllRecipes();
-            Destroy(other.gameObject);
+            Destroy(other.transform.root.gameObject);
             audioSource.PlayOneShot(correctSound);
             foreach(var p in goalEffect)
             {

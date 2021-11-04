@@ -100,4 +100,12 @@ public class PlayerControl : MonoBehaviour
         tellGre.GetComponent<TeleportGrenade>().ReturnBase(false);
         Tutorial.IntoIsRunning(false);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            tellGre.transform.position = this.transform.position + new Vector3(0, -1f, 0);
+        }
+    }
 }

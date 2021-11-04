@@ -23,7 +23,7 @@ public class EnemyBullet : Bullet
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<PlayerControl>().PlayerAttacked(bulletPower);
+            other.transform.root.GetComponent<PlayerControl>().PlayerAttacked(bulletPower);
             Destroy(this.gameObject);
         }
 

@@ -10,11 +10,14 @@ public class ThrowItem : MonoBehaviour
     private GameObject canvas;
 
     private OVRGrabbable grabbable;
+    
+    [SerializeField]
+    private GameObject teleGre;
 
     void Start()
     {
         canvas = transform.Find("Sphere/Canvas").gameObject;
-        grabbable = GetComponent<OVRGrabbable>();
+        grabbable = transform.root.GetComponent<OVRGrabbable>();
     }
 
     
@@ -22,6 +25,11 @@ public class ThrowItem : MonoBehaviour
     {
         if (grabbable.grabbedBy) canvas.SetActive(true);
         else canvas.SetActive(false);
+
+        if(4200 < this.transform.position.y && this.transform.position.y < 4250)
+        {
+            this.transform.position = teleGre.GetComponent<TeleportGrenade>().GetCraftPos().position;
+        }
     }
 
     public int GetQuantity()

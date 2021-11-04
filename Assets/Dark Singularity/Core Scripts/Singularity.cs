@@ -18,7 +18,7 @@ public class Singularity : MonoBehaviour
 
     private float timer = 0;
 
-    private float excessTime = 10f;
+    private float excessTime = 5f;
 
     private GameObject core;
 

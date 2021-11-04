@@ -30,7 +30,7 @@ public class EnemyFire : MonoBehaviour
             time += Time.deltaTime;
             if(time >= interval)
             {
-                other.GetComponent<PlayerControl>().PlayerAttacked(power);
+                other.transform.root.GetComponent<PlayerControl>().PlayerAttacked(power);
                 time = 0;
             }
         }

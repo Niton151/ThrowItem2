@@ -16,9 +16,11 @@ public class EnemyControl2 : MonoBehaviour
 
     private Vector3 randomPos;
 
-    private GameObject player;
+    private GameObject playerPos;
 
-    private bool isCaution = false;
+    private GameObject cameraPos;
+
+    private bool isCaution = true;
 
     [SerializeField]
     private float waitTime;
@@ -44,11 +46,12 @@ public class EnemyControl2 : MonoBehaviour
     void Start()
     {
         this.hp = this.maxHp;
+        playerPos = GameObject.Find("PlayerCollider");
+        cameraPos = GameObject.Find("PlayerCollider");
         randomPos = RandomPosition.RandomPos(moveRange);
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         GotoNextPoint();
-        player = GameObject.Find("Player");
     }
 
 
@@ -60,7 +63,7 @@ public class EnemyControl2 : MonoBehaviour
         }
         else GotoNextPoint();
 
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        if (!agent.pathPending && agent.remainingDistance < 1f)
         {
             StopHere();
         }
@@ -81,7 +84,7 @@ public class EnemyControl2 : MonoBehaviour
         fire.SetActive(true);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -100,12 +103,12 @@ public class EnemyControl2 : MonoBehaviour
     private void AttackMode()
     {
         //ƒvƒŒƒCƒ„[‚Ì•û‚ðŒü‚­
-        this.transform.LookAt(player.transform);
-        agent.destination = player.transform.position;
+        this.transform.LookAt(playerPos.transform);
+        agent.destination = playerPos.transform.position;
         anim.SetBool("isForward", true);
 
         //‚±‚±‚©‚çUŒ‚
-        if (Vector3.Distance(this.transform.position, player.transform.position) < 1.5f)
+        if (Vector3.Distance(this.transform.position, playerPos.transform.position) < 1.5f)
         {
             anim.SetBool("isForward", false);
             agent.isStopped = true;
@@ -149,7 +152,7 @@ public class EnemyControl2 : MonoBehaviour
     private void EnemyDead()
     {
         exprode.SetActive(true);
-        Destroy(this.gameObject, 1f);
+        Destroy(this.gameObject, 0.5f);
     }
 }
 

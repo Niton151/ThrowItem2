@@ -28,17 +28,21 @@ public class Sword : MonoBehaviour
     [SerializeField]
     private GameObject Lhand;
 
+    private OVRGrabbable grabbable;
+
     private AudioSource audioSource;
 
     [SerializeField]
     private AudioClip damageSound;
 
     [SerializeField]
-    private AudioClip swingSound;
+    private ParticleSystem spark;
 
     void Start()
     {
         //col = this.GetComponent<BoxCollider>();
+        grabbable = transform.parent.GetComponent<OVRGrabbable>();
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -46,16 +50,7 @@ public class Sword : MonoBehaviour
     {
         L_acc = OVRInput.GetLocalControllerVelocity(Lcontroller);
         R_acc = OVRInput.GetLocalControllerVelocity(Rcontroller);
-        Debug.Log(R_acc);
-        if (L_acc.magnitude > atackableSpeed && Lhand.GetComponent<OVRGrabber>().grabbedObject != null && Lhand.GetComponent<OVRGrabber>().grabbedObject.gameObject == this.transform.parent.gameObject)
-        {
-            audioSource.PlayOneShot(swingSound);
-        }
-
-        if (R_acc.magnitude > atackableSpeed && Rhand.GetComponent<OVRGrabber>().grabbedObject != null && Rhand.GetComponent<OVRGrabber>().grabbedObject.gameObject == this.transform.parent.gameObject)
-        {
-            audioSource.PlayOneShot(swingSound);
-        }
+        
             //コメントアウトしてる部分は切ったときのコライダー管理
             /*
             if (Lhand.GetComponent<OVRGrabber>().grabbedObject != null && Lhand.GetComponent<OVRGrabber>().grabbedObject.gameObject.CompareTag("Sword") && -L_acc.y > atackableSpeed)
@@ -88,22 +83,30 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (L_acc.magnitude > atackableSpeed && Lhand.GetComponent<OVRGrabber>().grabbedObject != null && Lhand.GetComponent<OVRGrabber>().grabbedObject.gameObject == this.transform.parent.gameObject)
+        if (L_acc.magnitude > atackableSpeed && grabbable.grabbedBy ==true && grabbable.grabbedBy.gameObject.name == Lhand.name)
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
-                other.GetComponent<EnemyControl>().EnemyAttacked(power);
-                other.GetComponent<EnemyControl2>().EnemyAttacked(power);
+                spark.Play();
+                if (other.GetComponent<EnemyControl>() != null)
+                {
+                    other.GetComponent<EnemyControl>().EnemyAttacked(power);
+                }
+                else
+                {
+                    other.GetComponent<EnemyControl2>().EnemyAttacked(power);
+                }
+
                 audioSource.PlayOneShot(damageSound);
             }
         }
 
 
-        if (R_acc.magnitude > atackableSpeed && Rhand.GetComponent<OVRGrabber>().grabbedObject != null && Rhand.GetComponent<OVRGrabber>().grabbedObject.gameObject == this.transform.parent.gameObject)
+        if (R_acc.magnitude > atackableSpeed/* && grabbable.grabbedBy == true && grabbable.grabbedBy.gameObject.name == Rhand.name*/)
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
-                other.GetComponent<EnemyControl>().EnemyAttacked(power);
+                //other?.GetComponent<EnemyControl>().EnemyAttacked(power);
                 other.GetComponent<EnemyControl2>().EnemyAttacked(power);
                 audioSource.PlayOneShot(damageSound);
             }

@@ -126,6 +126,11 @@ public class Tutorial : MonoBehaviour
 
     private static bool isReturnBase;
 
+    private bool isAddEnemy = false;
+
+    [SerializeField]
+    private bool isTutorial;
+
     void Start()
     {
         text.text = messsage[0];
@@ -133,19 +138,36 @@ public class Tutorial : MonoBehaviour
 
     void Update()
     {
-        switch (returnBaseCount)
+        if (isTutorial)
         {
-            case 0:
-                FirstTutorial();
-                break;
-            case 1:
-                CraftTutorial();
-                break;
-            case 2:
-                EndTutorial();
-                break;
-            default:
-                break;
+            switch (returnBaseCount)
+            {
+                case 0:
+                    FirstTutorial();
+                    break;
+                case 1:
+                    CraftTutorial();
+                    break;
+                case 2:
+                    EndTutorial();
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            text.enabled = false;
+            ActiveImage(11);
+            if (OVRInput.GetDown(OVRInput.RawButton.A))
+            {
+                
+            }
+            if(isAddEnemy == false)
+            {
+                enemySpawn.GetComponent<ItemSpawn>().AddEnemy();
+                isAddEnemy = true;
+            }
         }
     }
 
