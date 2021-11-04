@@ -8,6 +8,8 @@ using UnityEditor;
 
 public class PlayerBullet : Bullet
 {
+    [SerializeField]
+    private GameObject spark;
     
     public override void Start()
     {
@@ -22,10 +24,11 @@ public class PlayerBullet : Bullet
 
     public override void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("EnemyBody"))
         {
-            other.GetComponent<EnemyControl>().EnemyAttacked(bulletPower);
-            Destroy(this.gameObject);
+            other.transform.parent.gameObject.GetComponent<EnemyControl>().EnemyAttacked(bulletPower);
+            spark.SetActive(true);
+            Destroy(this.gameObject, 0.5f);
         }
     }
 }

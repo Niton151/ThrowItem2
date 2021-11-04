@@ -64,6 +64,10 @@ public class EnemyControl : MonoBehaviour
 
     public static bool isTimeStop;
 
+    [SerializeField]
+    private GameObject explosion;
+
+
     void Start()
     {
         this.hp = this.maxHp;
@@ -125,7 +129,8 @@ public class EnemyControl : MonoBehaviour
         this.hp -= damage;
         if (this.hp <= 0)
         {
-            Destroy(this.gameObject);
+            explosion.SetActive(true);
+            Destroy(this.gameObject, 0.5f);
         }
     }
 
@@ -140,6 +145,10 @@ public class EnemyControl : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isCaution = true;
+        }
+        if (other.gameObject.CompareTag("PlayerBullet"))
+        {
+
         }
     }
 

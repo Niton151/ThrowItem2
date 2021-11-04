@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 0
-  bulletPower: 10
+  bulletPower: 5
   speed: 100
   rb: {fileID: 0}
 --- !u!54 &-3084525803283104694

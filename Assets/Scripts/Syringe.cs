@@ -14,7 +14,6 @@ public class Syringe : MonoBehaviour
 
     private float timer = 0;
 
-    [SerializeField]
     private GameObject playerControl;
 
     private BoxCollider col;
@@ -34,6 +33,7 @@ public class Syringe : MonoBehaviour
 
     void Start()
     {
+        playerControl = GameObject.Find("Player");
         col = GetComponent<BoxCollider>();
         audioSource = this.GetComponent<AudioSource>();
         healAmount = maxHealAmount;
@@ -42,7 +42,10 @@ public class Syringe : MonoBehaviour
 
     void Update()
     {
-        grabObj = this.GetComponent<OVRGrabbable>().grabbedBy?.gameObject;
+        if(GetComponent<OVRGrabbable>().grabbedBy == true)
+        {
+            grabObj = this.GetComponent<OVRGrabbable>().grabbedBy.gameObject;
+        }
 
         if (playerControl.GetComponent<PlayerControl>().GetPlayerHP() >= playerControl.GetComponent<PlayerControl>().GetPlayerMaxHP() || healAmount <= 0)
         {
@@ -53,7 +56,7 @@ public class Syringe : MonoBehaviour
             col.enabled = true;
         }
 
-        if ((grabObj?.name == "CustomHandRight" && OVRInput.GetUp(OVRInput.RawButton.A)) || (grabObj?.name == "CustomHandLeft" && OVRInput.GetUp(OVRInput.RawButton.X)))
+        if (grabObj != null && ((grabObj.name == "CustomHandRight" && OVRInput.GetUp(OVRInput.RawButton.A)) || (grabObj.name == "CustomHandLeft" && OVRInput.GetUp(OVRInput.RawButton.X))))
         {
             audioSource.Stop();
         }
@@ -71,7 +74,7 @@ public class Syringe : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Hand"))
         {
-            if((grabObj?.name == "CustomHandRight" && OVRInput.GetDown(OVRInput.RawButton.A)) || (grabObj?.name == "CustomHandLeft" && OVRInput.GetDown(OVRInput.RawButton.X)))
+            if(grabObj != null && ((grabObj.name == "CustomHandRight" && OVRInput.GetDown(OVRInput.RawButton.A)) || (grabObj.name == "CustomHandLeft" && OVRInput.GetDown(OVRInput.RawButton.X))))
             {
                 audioSource.PlayOneShot(recoverSound);
             }
@@ -79,7 +82,7 @@ public class Syringe : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= healInterval)
             {
-                if((grabObj?.name == "CustomHandRight" && OVRInput.Get(OVRInput.RawButton.A)) || (grabObj?.name == "CustomHandLeft" && OVRInput.Get(OVRInput.RawButton.X)))
+                if(grabObj != null && ((grabObj.name == "CustomHandRight" && OVRInput.Get(OVRInput.RawButton.A)) || (grabObj.name == "CustomHandLeft" && OVRInput.Get(OVRInput.RawButton.X))))
                 {
                     timer = 0;
                     if (audioSource.isPlaying == false) audioSource.PlayOneShot(recoverSound);

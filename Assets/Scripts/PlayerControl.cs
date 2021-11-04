@@ -31,7 +31,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         audioSource = this.GetComponent<AudioSource>();
-        hp = maxHp;
+        hp = maxHp - 50;
         hpSlider.value = hp / maxHp;
     }
 

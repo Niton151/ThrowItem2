@@ -85,6 +85,7 @@ public class TeleportGrenade : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            GetComponent<OVRGrabbable>().enabled = false;
             this.transform.rotation = Quaternion.Euler(Vector3.zero);
             itemSpawn.GetComponent<ItemSpawn>().Spawn();
             enemySpawn.GetComponent<ItemSpawn>().Spawn();           
@@ -104,6 +105,7 @@ public class TeleportGrenade : MonoBehaviour
 
     public void ReturnBase(bool isClear)
     {
+        GetComponent<OVRGrabbable>().enabled = true;
         audioSource.PlayOneShot(teleportSound);
         this.transform.position = basePos.position + new Vector3(0, 1, 0);
         player.transform.position = basePos.position;
@@ -140,10 +142,5 @@ public class TeleportGrenade : MonoBehaviour
     public GameObject GetCoreObj()
     {
         return core;
-    }
-
-    public void IntoIsBase(bool ib)
-    {
-
     }
 }

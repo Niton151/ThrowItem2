@@ -23,6 +23,8 @@ TagManager:
   - Arrow
   - Ground
   - food
+  - PlayerBullet
+  - EnemyBody
   layers:
   - Default
   - TransparentFX

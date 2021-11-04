@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8115485166900817389}
   - component: {fileID: 7263570530357133640}
   - component: {fileID: 1954824691404526705}
-  - component: {fileID: 3983103742058090636}
+  - component: {fileID: 7636067754621370634}
   m_Layer: 0
   m_Name: Syringe_Body
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3983103742058090636
-MeshCollider:
+--- !u!136 &7636067754621370634
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,10 +94,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8505122692466705275, guid: 5c991873bb16996489a69492afd3962f, type: 3}
+  m_Radius: 0.01
+  m_Height: 0.16
+  m_Direction: 2
+  m_Center: {x: 0.000000013038516, y: -0.000000013038516, z: 0.03274869}
 --- !u!1 &2925774556180087266
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,8 +324,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.025360823, y: 0.04999733, z: 0.024571657}
-  m_Center: {x: 0.0014100075, y: 0.07, z: -0.04013467}
+  m_Size: {x: 0.0036950014, y: 0.028057804, z: 0.009551287}
+  m_Center: {x: -0.00017249088, y: 0.080969796, z: -0.04571108}
 --- !u!114 &3983103743760576517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_snapOrientation: 1
   m_snapOffset: {fileID: 0}
   m_grabPoints:
-  - {fileID: 3983103742058090636}
+  - {fileID: 7636067754621370634}
 --- !u!82 &-5114422645289046735
 AudioSource:
   m_ObjectHideFlags: 0

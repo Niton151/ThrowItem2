@@ -135,9 +135,11 @@ public class Tutorial : MonoBehaviour
     [SerializeField]
     private Toggle toggle;
 
+    private GameObject uiHelper;
+
     void Start()
     {
-
+        uiHelper = GameObject.Find("UIHelpers");
     }
 
     void Update()
@@ -169,11 +171,6 @@ public class Tutorial : MonoBehaviour
         {
             canvas.SetActive(false);
             tellGre.SetActive(true);
-            //ActiveImage(11);
-            if (OVRInput.GetDown(OVRInput.RawButton.A))
-            {
-                
-            }
             if(isAddEnemy == false && returnBaseCount == 1)
             {
                 enemySpawn.GetComponent<ItemSpawn>().AddEnemy();
@@ -399,5 +396,6 @@ public class Tutorial : MonoBehaviour
     {
         isStart = true;
         toggle.gameObject.transform.root.gameObject.SetActive(false);
+        uiHelper.SetActive(false);
     }
 }

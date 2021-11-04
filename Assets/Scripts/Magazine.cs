@@ -8,8 +8,7 @@ public class Magazine : MonoBehaviour
     [SerializeField]
     private int maxAmmo;
 
-    [HideInInspector]
-    public int ammo = 15;
+    public int ammo = 100;
 
     [SerializeField]
     private Text ammoUI;

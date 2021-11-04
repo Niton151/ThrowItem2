@@ -107,14 +107,16 @@ public class EnemyControl2 : MonoBehaviour
         anim.SetBool("isForward", true);
 
         //Ç±Ç±Ç©ÇÁçUåÇ
-        if (Vector3.Distance(this.transform.position, playerPos.transform.position) < 5f)
+        if (Vector3.Distance(this.transform.position, playerPos.transform.position) < 1f)
         {
             anim.SetBool("isForward", false);
+            agent.isStopped = true;
             Attack();
         }
         else 
         {
             anim.SetBool("isAttack", false);
+            agent.isStopped = false;
             fire.SetActive(false);
         }       
     }
