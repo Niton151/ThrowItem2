@@ -7,8 +7,8 @@ public class SingularityCore : MonoBehaviour
     //by default, the game objects are simply turned off
     //as this is much more performant than destroying the objects
     void OnTriggerStay (Collider other) {
-        if(other.GetComponent<SingularityPullable>()){
-            other.gameObject.transform.position = craftPos.position + new Vector3(0, 1f, 0);
+        if(other.transform.root.gameObject.GetComponent<SingularityPullable>()){
+            other.transform.root.gameObject.transform.position = craftPos.position + new Vector3(0, 1f, 0);
         }
     }
 

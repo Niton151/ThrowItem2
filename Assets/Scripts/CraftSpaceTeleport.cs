@@ -42,6 +42,7 @@ public class CraftSpaceTeleport : MonoBehaviour
                 Tutorial.IntoIsCraftTell(true);
                 player.transform.position = craftPos.position + new Vector3(0, 0.5f, 0);
                 RenderSettings.skybox = spaceSky;
+                
             }
             else
             {

@@ -74,7 +74,7 @@ public class TeleportGrenade : MonoBehaviour
         {
             rb.isKinematic = true;
             Tutorial.IntoIsGround(true);
-            if (OVRInput.GetDown(OVRInput.RawButton.B) || Input.GetKeyDown(KeyCode.Space))
+            if ((OVRInput.GetDown(OVRInput.RawButton.B) || Input.GetKeyDown(KeyCode.Space)) && isRunning == false)
             {
                 TeleportPlayer();
             }
@@ -140,5 +140,10 @@ public class TeleportGrenade : MonoBehaviour
     public GameObject GetCoreObj()
     {
         return core;
+    }
+
+    public void IntoIsBase(bool ib)
+    {
+
     }
 }

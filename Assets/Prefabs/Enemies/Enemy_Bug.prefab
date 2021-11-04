@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9d506c81e20cc4a80a866d8cc8d158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval: 0.5
+  interval: 1
   power: 5
 --- !u!1 &7474329980589878048
 GameObject:
@@ -478,7 +478,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7474329980589878054}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.7067795, y: 0.40469915, z: 0.8534569}
@@ -1576,7 +1576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 06d796ccd85dc4c4b9c98270196715ae, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 06d796ccd85dc4c4b9c98270196715ae, type: 3}
       propertyPath: m_IsActive

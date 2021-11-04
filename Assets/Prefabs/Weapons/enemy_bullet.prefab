@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709560560698904951}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -249,6 +249,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: f1fca55934f274a4b9c8fd316d61e964, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: f1fca55934f274a4b9c8fd316d61e964, type: 3}
       propertyPath: scalingMode
       value: 1
@@ -260,6 +264,11 @@ PrefabInstance:
     - target: {fileID: 19800004, guid: f1fca55934f274a4b9c8fd316d61e964, type: 3}
       propertyPath: scalingMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013218167218, guid: f1fca55934f274a4b9c8fd316d61e964,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1fca55934f274a4b9c8fd316d61e964, type: 3}

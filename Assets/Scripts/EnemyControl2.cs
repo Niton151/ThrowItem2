@@ -18,8 +18,6 @@ public class EnemyControl2 : MonoBehaviour
 
     private GameObject playerPos;
 
-    private GameObject cameraPos;
-
     private bool isCaution = true;
 
     [SerializeField]
@@ -46,8 +44,7 @@ public class EnemyControl2 : MonoBehaviour
     void Start()
     {
         this.hp = this.maxHp;
-        playerPos = GameObject.Find("PlayerCollider");
-        cameraPos = GameObject.Find("PlayerCollider");
+        playerPos = GameObject.Find("PlayerPos");
         randomPos = RandomPosition.RandomPos(moveRange);
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
@@ -61,11 +58,13 @@ public class EnemyControl2 : MonoBehaviour
         {
             AttackMode();
         }
-        else GotoNextPoint();
-
-        if (!agent.pathPending && agent.remainingDistance < 1f)
+        else
         {
-            StopHere();
+            GotoNextPoint();
+            if (!agent.pathPending && agent.remainingDistance < 2f)
+            {
+                StopHere();
+            }
         }
     }
 
@@ -108,10 +107,9 @@ public class EnemyControl2 : MonoBehaviour
         anim.SetBool("isForward", true);
 
         //‚±‚±‚©‚çUŒ‚
-        if (Vector3.Distance(this.transform.position, playerPos.transform.position) < 1.5f)
+        if (Vector3.Distance(this.transform.position, playerPos.transform.position) < 5f)
         {
             anim.SetBool("isForward", false);
-            agent.isStopped = true;
             Attack();
         }
         else 

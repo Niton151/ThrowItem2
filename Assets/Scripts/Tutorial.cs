@@ -158,12 +158,13 @@ public class Tutorial : MonoBehaviour
         else
         {
             text.enabled = false;
-            ActiveImage(11);
+            tellGre.SetActive(true);
+            //ActiveImage(11);
             if (OVRInput.GetDown(OVRInput.RawButton.A))
             {
                 
             }
-            if(isAddEnemy == false)
+            if(isAddEnemy == false && returnBaseCount == 1)
             {
                 enemySpawn.GetComponent<ItemSpawn>().AddEnemy();
                 isAddEnemy = true;

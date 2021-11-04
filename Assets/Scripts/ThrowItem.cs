@@ -10,14 +10,14 @@ public class ThrowItem : MonoBehaviour
     private GameObject canvas;
 
     private OVRGrabbable grabbable;
-    
-    [SerializeField]
+   
     private GameObject teleGre;
 
     void Start()
     {
         canvas = transform.Find("Sphere/Canvas").gameObject;
         grabbable = transform.root.GetComponent<OVRGrabbable>();
+        teleGre = GameObject.Find("TeleportGrenade");
     }
 
     
@@ -28,7 +28,12 @@ public class ThrowItem : MonoBehaviour
 
         if(4200 < this.transform.position.y && this.transform.position.y < 4250)
         {
-            this.transform.position = teleGre.GetComponent<TeleportGrenade>().GetCraftPos().position;
+            this.transform.root.transform.position = teleGre.GetComponent<TeleportGrenade>().GetCraftPos().position;
+        }
+
+        if(this.transform.position.y < -5)
+        {
+            this.transform.root.transform.position = new Vector3(this.transform.position.x, 10f, this.transform.position.z);
         }
     }
 

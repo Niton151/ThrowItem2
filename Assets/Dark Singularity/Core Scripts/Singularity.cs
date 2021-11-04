@@ -60,7 +60,7 @@ public class Singularity : MonoBehaviour
     }
 
     void OnTriggerStay (Collider other) {
-        if(isExistHole && other.attachedRigidbody && other.GetComponent<SingularityPullable>()) {
+        if(isExistHole && other.attachedRigidbody && other.transform.root.GetComponent<SingularityPullable>()) {
             float gravityIntensity = 1/Vector3.Distance(transform.position, other.transform.position) ;
             other.attachedRigidbody.AddForce((transform.position - other.transform.position) * gravityIntensity * other.attachedRigidbody.mass * GRAVITY_PULL * Time.smoothDeltaTime);
         }
