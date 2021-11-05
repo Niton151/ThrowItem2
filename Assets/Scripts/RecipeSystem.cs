@@ -60,7 +60,7 @@ public class RecipeSystem : MonoBehaviour
     public void CraftItem()
     {      
         if (JudgeCraftable() == true) { 
-            Instantiate(craftItem, craftPos.position, Quaternion.identity);
+            Instantiate(craftItem, craftPos.position + new Vector3(0, 1, 1), Quaternion.identity);
             foreach (var p in craftEffect)
             {
                 p.Play();
@@ -70,6 +70,11 @@ public class RecipeSystem : MonoBehaviour
             {
                 Tutorial.IntoIsCraftSyringe(true);
             }
+            if (craftItemName == "ƒnƒ“ƒhƒKƒ“")
+            {
+                Tutorial.IntoIsMakeGun(true);
+            }
+
             audioSource.PlayOneShot(craftSound);
             for(int i = 0; i < haveQuantity.Length; i++)
             {

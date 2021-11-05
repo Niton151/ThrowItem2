@@ -31,7 +31,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         audioSource = this.GetComponent<AudioSource>();
-        hp = maxHp - 50;
+        hp = maxHp;
         hpSlider.value = hp / maxHp;
     }
 
@@ -99,13 +99,14 @@ public class PlayerControl : MonoBehaviour
     {
         tellGre.GetComponent<TeleportGrenade>().ReturnBase(false);
         Tutorial.IntoIsRunning(false);
+        hp = maxHp / 3;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            tellGre.transform.position = this.transform.position + new Vector3(0, -1f, 0);
+            tellGre.transform.position = this.transform.position + new Vector3(0, 3f, 0);
         }
     }
 }

@@ -73,23 +73,16 @@ public class TeleportGrenade : MonoBehaviour
         if(this.gameObject.transform.position.y <= 3)
         {
             rb.isKinematic = true;
+            this.transform.rotation = Quaternion.Euler(Vector3.zero);
             Tutorial.IntoIsGround(true);
             if ((OVRInput.GetDown(OVRInput.RawButton.B) || Input.GetKeyDown(KeyCode.Space)) && isRunning == false)
             {
                 TeleportPlayer();
+                itemSpawn.GetComponent<ItemSpawn>().Spawn(0);
+                enemySpawn.GetComponent<ItemSpawn>().Spawn(1);
+
             }
         }
-    }
-
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            GetComponent<OVRGrabbable>().enabled = false;
-            this.transform.rotation = Quaternion.Euler(Vector3.zero);
-            itemSpawn.GetComponent<ItemSpawn>().Spawn();
-            enemySpawn.GetComponent<ItemSpawn>().Spawn();           
-        }  
     }
 
     private void TeleportPlayer()
@@ -105,7 +98,7 @@ public class TeleportGrenade : MonoBehaviour
 
     public void ReturnBase(bool isClear)
     {
-        GetComponent<OVRGrabbable>().enabled = true;
+        enemySpawn.GetComponent<ItemSpawn>().Spawn(2);
         audioSource.PlayOneShot(teleportSound);
         this.transform.position = basePos.position + new Vector3(0, 1, 0);
         player.transform.position = basePos.position;
@@ -119,7 +112,12 @@ public class TeleportGrenade : MonoBehaviour
         core.SetActive(false);
         blackHole.SetActive(false);
         isBase = true;
+        isRunning = false;
         Tutorial.IntoIsBase(isBase);
+        foreach(var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Destroy(enemy);
+        }
     }
 
     private void TeleportItems()

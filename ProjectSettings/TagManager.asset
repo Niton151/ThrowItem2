@@ -25,6 +25,7 @@ TagManager:
   - food
   - PlayerBullet
   - EnemyBody
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -41,7 +42,7 @@ TagManager:
   - enemy
   - enemyBullet
   - playerBody
-  - 
+  - hole
   - 
   - 
   - 

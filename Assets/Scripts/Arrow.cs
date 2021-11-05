@@ -19,9 +19,15 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("EnemyBody"))
+        {
+            other.transform.parent.GetComponent<EnemyControl>().EnemyAttacked(power);
+        }
+
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyControl>().EnemyAttacked(power);
+            other.gameObject.GetComponent<EnemyControl2>().EnemyAttacked(power);
+            Destroy(this.gameObject, 0.5f);
         }
     }
 }

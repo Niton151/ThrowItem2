@@ -20,9 +20,14 @@ public class GrenadeExplode : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("EnemyBody"))
+        {
+            other.transform.parent.GetComponent<EnemyControl>().EnemyAttacked(power);
+        }
+
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyControl>().EnemyAttacked(power);
+            other.GetComponent<EnemyControl2>().EnemyAttacked(power);
         }
     }
 }

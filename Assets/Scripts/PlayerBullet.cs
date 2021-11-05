@@ -30,5 +30,12 @@ public class PlayerBullet : Bullet
             spark.SetActive(true);
             Destroy(this.gameObject, 0.5f);
         }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<EnemyControl2>().EnemyAttacked(bulletPower);
+            spark.SetActive(true);
+            Destroy(this.gameObject, 0.5f);
+        }
     }
 }

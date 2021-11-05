@@ -18,7 +18,7 @@ public class Singularity : MonoBehaviour
 
     private float timer = 0;
 
-    private float excessTime = 5f;
+    private float excessTime = 7f;
 
     private GameObject core;
 
@@ -44,14 +44,16 @@ public class Singularity : MonoBehaviour
 
         if (isExistHole)
         {
-            ChangeParticleSpeed();
+            ChangeParticleSpeed(1f);
             timer += Time.deltaTime;
             if (timer >= excessTime)
             {
                 core.SetActive(true);
-                if (timer >= excessTime + 1f)
+                if (timer >= excessTime + 3f)
                 {
+                    ChangeParticleSpeed(0.01f);
                     core.SetActive(false);
+                    isExistHole = false;
                     particle.gameObject.SetActive(false);
                     timer = 0;
                 }
@@ -66,12 +68,12 @@ public class Singularity : MonoBehaviour
         }
     }
 
-    private void ChangeParticleSpeed()
+    private void ChangeParticleSpeed(float speed)
     {
         foreach(var p in particleSystems)
         {
             var main = p.main;
-            main.simulationSpeed = 1f;
+            main.simulationSpeed = speed;
         }
     }
 }

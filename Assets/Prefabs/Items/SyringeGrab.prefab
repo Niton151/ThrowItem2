@@ -338,10 +338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463d337bc72e9784899ba76dbea40a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealAmount: 50
-  healInterval: 0.2
-  playerControl: {fileID: 7363854473188171450, guid: c49d328bd0be72b428007e9a8f69fcc0,
-    type: 3}
+  maxHealAmount: 150
+  healInterval: 0.5
   liquid: {fileID: 2925774556180087266}
   stingSound: {fileID: 8300000, guid: f752e282d28ef9148b498bb08a8affb5, type: 3}
   recoverSound: {fileID: 8300000, guid: 000b1070c4fb9354796065ebba0648f1, type: 3}

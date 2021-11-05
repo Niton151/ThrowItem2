@@ -19,6 +19,13 @@ public class ItemSpawn : MonoBehaviour
     [SerializeField]
     private GameObject enemy;
 
+    private float timer = 0;
+
+    [SerializeField]
+    private float interval;
+
+    private bool isEnemy = false;
+
     void Start()
     {
 
@@ -27,16 +34,39 @@ public class ItemSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (isEnemy)
+        {
+            timer += Time.deltaTime;
+            if(timer >= interval)
+            {
+                var rpos = this.transform.position + RandomPosition.RandomPos(radius);
+                Instantiate(RandomPosition.RandomInList(items), new Vector3(rpos.x, 10f, rpos.z), Quaternion.Euler(new Vector3(0, 0, Random.Range(-180f, 180f))));
+                timer = 0;
+            }
+        }
     }
 
-    public void Spawn()
+    public void Spawn(int n)
     {
-        for(int i = 0; i < maxCount; i++)
+        if (n == 0)
         {
-            var rpos = this.transform.position + RandomPosition.RandomPos(radius);
-            Instantiate(RandomPosition.RandomInList(items), new Vector3(rpos.x, 10f, rpos.z), Quaternion.Euler(new Vector3(0, 0, Random.Range(-180f, 180f))));
+            for (int i = 0; i < maxCount; i++)
+            {
+                var rpos = this.transform.position + RandomPosition.RandomPos(radius);
+                Instantiate(RandomPosition.RandomInList(items), new Vector3(rpos.x, 10f, rpos.z), Quaternion.Euler(new Vector3(0, 0, Random.Range(-180f, 180f))));
+            }
         }
+        else if (n == 1)
+        {
+            isEnemy = true;
+            for (int i = 0; i < maxCount; i++)
+            {
+                var rpos = this.transform.position + RandomPosition.RandomPos(radius);
+                Instantiate(RandomPosition.RandomInList(items), new Vector3(rpos.x, 10f, rpos.z), Quaternion.Euler(new Vector3(0, 0, Random.Range(-180f, 180f))));
+            }
+
+        }
+        else isEnemy = false;
     }
 
     void OnDrawGizmosSelected()

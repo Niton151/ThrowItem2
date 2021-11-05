@@ -126,6 +126,8 @@ public class Tutorial : MonoBehaviour
 
     private static bool isReturnBase;
 
+    private static bool isMakeGun = false;
+
     private bool isAddEnemy = false;
 
     public bool isTutorial;
@@ -171,7 +173,7 @@ public class Tutorial : MonoBehaviour
         {
             canvas.SetActive(false);
             tellGre.SetActive(true);
-            if(isAddEnemy == false && returnBaseCount == 1)
+            if(isAddEnemy == false && isMakeGun == true)
             {
                 enemySpawn.GetComponent<ItemSpawn>().AddEnemy();
                 isAddEnemy = true;
@@ -397,5 +399,10 @@ public class Tutorial : MonoBehaviour
         isStart = true;
         toggle.gameObject.transform.root.gameObject.SetActive(false);
         uiHelper.SetActive(false);
+    }
+
+    public static void IntoIsMakeGun(bool img)
+    {
+        isMakeGun = img;
     }
 }
