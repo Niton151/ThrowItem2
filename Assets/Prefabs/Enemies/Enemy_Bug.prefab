@@ -296,9 +296,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7474329980589782788}
   - component: {fileID: 7474329980601378342}
+  - component: {fileID: 5435650231245172700}
   m_Layer: 12
   m_Name: PA_Warrior
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -398,6 +399,19 @@ SkinnedMeshRenderer:
     m_Center: {x: -25.837725, y: 2.9384956, z: -25.342928}
     m_Extent: {x: 35.350628, y: 44.153343, z: 55.326935}
   m_DirtyAABB: 0
+--- !u!65 &5435650231245172700
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474329980589878052}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8830671, y: 0.7070128, z: 1.1065387}
+  m_Center: {x: 0.029384995, y: 0.25837728, z: -0.25342926}
 --- !u!1 &7474329980589878054
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +429,7 @@ GameObject:
   - component: {fileID: 2291689381709949339}
   m_Layer: 12
   m_Name: Enemy_Bug
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

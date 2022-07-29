@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealAmount: 500
-  healInterval: 0.5
+  healInterval: 0.2
   liquid: {fileID: 2925774556180087266}
   stingSound: {fileID: 8300000, guid: f752e282d28ef9148b498bb08a8affb5, type: 3}
   recoverSound: {fileID: 8300000, guid: 000b1070c4fb9354796065ebba0648f1, type: 3}

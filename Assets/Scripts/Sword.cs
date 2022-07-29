@@ -89,7 +89,7 @@ public class Sword : MonoBehaviour
             {
                 audioSource.PlayOneShot(damageSound);
                 StartCoroutine(Vibration.Vibrate(duration: 0.2f, controller: OVRInput.Controller.LTouch));
-                other.GetComponent<EnemyControl2>().EnemyAttacked(power);
+                other.GetComponentInParent<EnemyControl2>().EnemyAttacked(power);
             }
         }
 
@@ -100,7 +100,7 @@ public class Sword : MonoBehaviour
             {
                 StartCoroutine(Vibration.Vibrate(duration: 0.2f, controller: OVRInput.Controller.RTouch));
                 //other?.GetComponent<EnemyControl>().EnemyAttacked(power);
-                other.GetComponent<EnemyControl2>().EnemyAttacked(power);
+                other.GetComponentInParent<EnemyControl2>().EnemyAttacked(power);
                 audioSource.PlayOneShot(damageSound);
             }
         }

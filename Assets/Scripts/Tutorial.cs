@@ -146,6 +146,11 @@ public class Tutorial : MonoBehaviour
 
     void Update()
     {
+        if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
+        {
+            timer = 100;
+        }
+        
         if (isStart == false)
         {
             canvas.SetActive(false);

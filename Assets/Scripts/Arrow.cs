@@ -26,7 +26,7 @@ public class Arrow : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<EnemyControl2>().EnemyAttacked(power);
+            other.gameObject.GetComponentInParent<EnemyControl2>().EnemyAttacked(power);
             Destroy(this.gameObject, 0.5f);
         }
     }

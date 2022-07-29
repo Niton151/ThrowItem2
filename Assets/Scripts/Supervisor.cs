@@ -18,7 +18,7 @@ public class Supervisor : MonoBehaviour
         metal,
         plastic,
         glass,
-        food,//H‚×c‚µ
+        food,//é£Ÿã¹æ®‹ã—
         cloth
     };
 

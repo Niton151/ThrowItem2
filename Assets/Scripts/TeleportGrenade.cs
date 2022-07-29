@@ -83,6 +83,11 @@ public class TeleportGrenade : MonoBehaviour
 
             }
         }
+
+        if (Mathf.Abs(transform.position.x) > 100 || Mathf.Abs(transform.position.x) > 1000 || Mathf.Abs(transform.position.z) > 1000)
+        {
+            this.transform.position = basePos.position + new Vector3(1, 1, 1);
+        }
     }
 
     private void TeleportPlayer()

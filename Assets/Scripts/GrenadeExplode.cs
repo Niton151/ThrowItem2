@@ -27,7 +27,7 @@ public class GrenadeExplode : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyControl2>().EnemyAttacked(power);
+            other.GetComponentInParent<EnemyControl2>().EnemyAttacked(power);
         }
     }
 }
