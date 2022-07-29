@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
-/// Debug.Log()‚ğUI.Text‚É•\¦
+/// Debug.Log()ï¿½ï¿½UI.Textï¿½É•\ï¿½ï¿½
 /// </summary>
 public class CatchLog : MonoBehaviour
 {
@@ -14,13 +14,13 @@ public class CatchLog : MonoBehaviour
     private StringBuilder builder = new StringBuilder();
     private bool autoScroll = true;
 
-    [SerializeField, Tooltip("ƒeƒLƒXƒg‚Ìæ“ª‚É‚ğ•\¦‚·‚é")]
+    [SerializeField, Tooltip("ï¿½eï¿½Lï¿½Xï¿½gï¿½Ìæ“ªï¿½Éï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     private bool useTimeStamp = true;
 
-    [SerializeField, Tooltip("ƒƒO‚Ìí•Ê‚É‰‚¶‚ÄF‚ğ•t‚¯‚é")]
+    [SerializeField, Tooltip("ï¿½ï¿½ï¿½Oï¿½Ìï¿½Ê‚É‰ï¿½ï¿½ï¿½ï¿½ÄFï¿½ï¿½tï¿½ï¿½ï¿½ï¿½")]
     private bool coloredByLogType = true;
 
-    [SerializeField, Tooltip("“Á’è‚Ì•¶š—ñ‚ğŠÜ‚ŞƒƒO‚Í•\¦‚µ‚È‚¢")]
+    [SerializeField, Tooltip("ï¿½ï¿½ï¿½ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚Şƒï¿½ï¿½Oï¿½Í•ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½")]
     private string[] ignore = new string[] { "[OVR" };
 
     private void Awake()
@@ -96,7 +96,7 @@ public class CatchLog : MonoBehaviour
     }
 
     /// <summary>
-    /// •¶š—ñ‚ÉF•t‚¯
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉFï¿½tï¿½ï¿½
     /// </summary>
     /// <param name="src"></param>
     /// <param name="color"></param>
@@ -107,7 +107,7 @@ public class CatchLog : MonoBehaviour
     }
 
     /// <summary>
-    /// Text‚Ì”ÍˆÍ“à‚É•¶š—ñ‚ğû‚ß‚é
+    /// Textï¿½Ì”ÍˆÍ“ï¿½É•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
     /// </summary>
     /// <param name="t"></param>
     private void AdjustText(Text t)
@@ -124,7 +124,7 @@ public class CatchLog : MonoBehaviour
         var lines = t.text.Split('\n');
         foreach (string line in lines)
         {
-            // Œ©Ø‚ê‚Ä‚¢‚é•¶š”‚ª0‚É‚È‚é‚Ü‚ÅAƒeƒLƒXƒg‚Ìæ“ªs‚©‚çÁ‚µ‚Ä‚ä‚­
+            // ï¿½ï¿½ï¿½Ø‚ï¿½Ä‚ï¿½ï¿½é•¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0ï¿½É‚È‚ï¿½Ü‚ÅAï¿½eï¿½Lï¿½Xï¿½gï¿½Ìæ“ªï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ä‚­
             t.text = t.text.Remove(0, line.Length + 1);
             truncatedCount -= (line.Length + 1);
             if (truncatedCount <= 0)

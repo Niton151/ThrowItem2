@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody>();
 
-        //UŒ‚í—Ş”»’è
+        //æ”»æ’ƒç¨®é¡åˆ¤å®š
         switch (bulletType)
         {
             case BulletType.nomal:

@@ -100,7 +100,7 @@ public class TeleportGrenade : MonoBehaviour
     {
         enemySpawn.GetComponent<ItemSpawn>().Spawn(2);
         audioSource.PlayOneShot(teleportSound);
-        this.transform.position = basePos.position + new Vector3(0, 1, 0);
+        this.transform.position = basePos.position + new Vector3(1, 1, 1);
         player.transform.position = basePos.position;
         rb.isKinematic = false;
         timer = 0;

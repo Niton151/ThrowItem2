@@ -60,17 +60,17 @@ public class RecipeSystem : MonoBehaviour
     public void CraftItem()
     {      
         if (JudgeCraftable() == true) { 
-            Instantiate(craftItem, craftPos.position + new Vector3(0, 1, 1), Quaternion.identity);
+            Instantiate(craftItem, craftPos.position + new Vector3(0, 1, 0), Quaternion.identity);
             foreach (var p in craftEffect)
             {
                 p.Play();
             }
 
-            if (craftItemName == "’ËŠí")
+            if (craftItemName == "æ³¨å°„å™¨")
             {
                 Tutorial.IntoIsCraftSyringe(true);
             }
-            if (craftItemName == "ƒnƒ“ƒhƒKƒ“")
+            if (craftItemName == "ãƒãƒ³ãƒ‰ã‚¬ãƒ³")
             {
                 Tutorial.IntoIsMakeGun(true);
             }
@@ -87,13 +87,13 @@ public class RecipeSystem : MonoBehaviour
 
     public void CreatRecipe()
     {
-        //”z—ñ‚ğ‹K’è‚Ì‘å‚«‚³‚É•ÏX
+        //é…åˆ—ã‚’è¦å®šã®å¤§ãã•ã«å¤‰æ›´
         if (requiredQuantity.Length < haveQuantity.Length)
         {
             Array.Resize(ref requiredQuantity, haveQuantity.Length);
         }
 
-        //UI‚ğ¶¬
+        //UIã‚’ç”Ÿæˆ
         for (int i = 0; i < haveQuantity.Length; i++)
         {
             if (requiredQuantity[i] > 0)
@@ -146,12 +146,12 @@ public class RecipeSystem : MonoBehaviour
 
     public string ToString(Supervisor.Item item)
     {
-        if (item == Supervisor.Item.wood) return "–Ø";
-        else if (item == Supervisor.Item.metal) return "‹à‘®";
-        else if (item == Supervisor.Item.plastic) return "ƒvƒ‰ƒXƒ`ƒbƒN";
-        else if (item == Supervisor.Item.glass) return "ƒKƒ‰ƒX";
-        else if (item == Supervisor.Item.food) return "H—¿";
-        else if (item == Supervisor.Item.cloth) return "•z";
+        if (item == Supervisor.Item.wood) return "æœ¨";
+        else if (item == Supervisor.Item.metal) return "é‡‘å±";
+        else if (item == Supervisor.Item.plastic) return "ãƒ—ãƒ©ã‚¹ãƒãƒƒã‚¯";
+        else if (item == Supervisor.Item.glass) return "ã‚¬ãƒ©ã‚¹";
+        else if (item == Supervisor.Item.food) return "é£Ÿæ–™";
+        else if (item == Supervisor.Item.cloth) return "å¸ƒ";
         else return base.ToString();
     }
 }

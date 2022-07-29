@@ -51,7 +51,7 @@ public class Sword : MonoBehaviour
         L_acc = OVRInput.GetLocalControllerVelocity(Lcontroller);
         R_acc = OVRInput.GetLocalControllerVelocity(Rcontroller);
         
-            //�R�����g�A�E�g���Ă镔���͐؂����Ƃ��̃R���C�_�[�Ǘ�
+            //コメントアウトしてる部分は切ったときのコライダー管理
             /*
             if (Lhand.GetComponent<OVRGrabber>().grabbedObject != null && Lhand.GetComponent<OVRGrabber>().grabbedObject.gameObject.CompareTag("Sword") && -L_acc.y > atackableSpeed)
             {
@@ -83,21 +83,13 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (L_acc.magnitude > atackableSpeed && grabbable.grabbedBy ==true && grabbable.grabbedBy.gameObject.name == Lhand.name)
+        if (L_acc.magnitude > atackableSpeed/* && grabbable.grabbedBy ==true && grabbable.grabbedBy.gameObject.name == Lhand.name*/)
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
-                spark.Play();
-                if (other.GetComponent<EnemyControl>() != null)
-                {
-                    other.GetComponent<EnemyControl>().EnemyAttacked(power);
-                }
-                else
-                {
-                    other.GetComponent<EnemyControl2>().EnemyAttacked(power);
-                }
-
                 audioSource.PlayOneShot(damageSound);
+                StartCoroutine(Vibration.Vibrate(duration: 0.2f, controller: OVRInput.Controller.LTouch));
+                other.GetComponent<EnemyControl2>().EnemyAttacked(power);
             }
         }
 
@@ -106,6 +98,7 @@ public class Sword : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
+                StartCoroutine(Vibration.Vibrate(duration: 0.2f, controller: OVRInput.Controller.RTouch));
                 //other?.GetComponent<EnemyControl>().EnemyAttacked(power);
                 other.GetComponent<EnemyControl2>().EnemyAttacked(power);
                 audioSource.PlayOneShot(damageSound);

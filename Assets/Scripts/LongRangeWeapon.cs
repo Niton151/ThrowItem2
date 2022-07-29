@@ -31,11 +31,14 @@ public class LongRangeWeapon : MonoBehaviour
     private AudioClip reloadInSound;
 
     private ParticleSystem muzzleFrash;
+    
+    private OVRGrabbable grabbable;
 
     void Start()
     {
         audioSource = this.GetComponent<AudioSource>();
         muzzleFrash = GetComponentInChildren<ParticleSystem>();
+        grabbable = GetComponent<OVRGrabbable>();
     }
 
     void Update()
@@ -61,6 +64,14 @@ public class LongRangeWeapon : MonoBehaviour
         Instantiate(bullet, muzzle.transform.position, muzzle.transform.rotation);
         muzzleFrash.Play();
         audioSource.PlayOneShot(shootSound);
+        if (grabbable.grabbedBy == true && grabbable.grabbedBy.gameObject.name == "CustomHandRight")
+        {
+            StartCoroutine(Vibration.Vibrate(duration: 0.2f, controller: OVRInput.Controller.RTouch));
+        }
+        else if(grabbable.grabbedBy == true && grabbable.grabbedBy.gameObject.name == "CustomHandLeft")
+        {
+            StartCoroutine(Vibration.Vibrate(duration: 0.2f, controller: OVRInput.Controller.LTouch));
+        }
     }
 
     private void OnTriggerEnter(Collider other)

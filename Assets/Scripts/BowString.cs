@@ -17,9 +17,6 @@ public class BowString : MonoBehaviour
     private AudioSource audioSource;
 
     [SerializeField]
-    private AudioClip stringSound;
-
-    [SerializeField]
     private AudioClip shootSound;
 
     void Start()
@@ -32,9 +29,10 @@ public class BowString : MonoBehaviour
         if (isMove)
         {
             this.transform.position = arrow.transform.position;
-            audioSource.volume = this.transform.localPosition.y * -10f;
+            //audioSource.volume = this.transform.localPosition.y * -10f;
             if (grabbable.grabbedBy == false && isPullString)
             {
+                audioSource.Stop();
                 BowShoot();           
             }
         }
@@ -64,7 +62,7 @@ public class BowString : MonoBehaviour
         initialSpeed = -(-0.01f + this.transform.localPosition.y);
         arrow.GetComponent<Rigidbody>().AddRelativeForce(0f, 0f, initialSpeed * 10000);
         isPullString = false;
-        audioSource.volume = 1f;
+        //audioSource.volume = 1f;
         audioSource.loop = false;
         audioSource.PlayOneShot(shootSound);
     }

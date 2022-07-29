@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class EnemyControl : MonoBehaviour
 {
-    [Header("ƒXƒe[ƒ^ƒX")]
+    [Header("ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹")]
     [SerializeField]
     private float maxHp;
 
     private float hp;
 
-    [Header("ˆÚ“®—p•Ï”")]
+    [Header("ç§»å‹•ç”¨å¤‰æ•°")]
     private float interval;
 
     [SerializeField]
@@ -26,7 +26,7 @@ public class EnemyControl : MonoBehaviour
     private float smoothTime;
 
     [SerializeField]
-    private float stableSmoothTime; //–Ú“I’n‚Ü‚Å‚É‚©‚©‚éŽžŠÔ
+    private float stableSmoothTime; //ç›®çš„åœ°ã¾ã§ã«ã‹ã‹ã‚‹æ™‚é–“
 
     [SerializeField]
     private float cautionSmoothTime;
@@ -36,9 +36,9 @@ public class EnemyControl : MonoBehaviour
     private Vector3 randomPos;
 
     [SerializeField]
-    private Transform rangeA, rangeB; //‘ÎŠp‚ÉÝ’u
+    private Transform rangeA, rangeB; //å¯¾è§’ã«è¨­ç½®
 
-    private float moveTimer; //ŽžŠÔŒv‘ª—p
+    private float moveTimer; //æ™‚é–“è¨ˆæ¸¬ç”¨
 
     [HideInInspector]
     private bool isMove = false;
@@ -51,8 +51,8 @@ public class EnemyControl : MonoBehaviour
 
     private Vector3 latestPos;
 
-    //‚±‚±‚©‚çUŒ‚—p•Ï”
-    [Header("UŒ‚—p•Ï”")]
+    //ã“ã“ã‹ã‚‰æ”»æ’ƒç”¨å¤‰æ•°
+    [Header("æ”»æ’ƒç”¨å¤‰æ•°")]
 
     [SerializeField]
     private Transform nomalMuzzle;
@@ -87,19 +87,19 @@ public class EnemyControl : MonoBehaviour
         {
             smoothTime = stableSmoothTime;
             interval = stableInterval;
-            Vector3 diff = transform.position - latestPos;   //‘O‰ñ‚©‚ç‚Ç‚±‚Éi‚ñ‚¾‚©‚ðƒxƒNƒgƒ‹‚ÅŽæ“¾
-            latestPos = transform.position;  //‘O‰ñ‚ÌPosition‚ÌXV
+            Vector3 diff = transform.position - latestPos;   //å‰å›žã‹ã‚‰ã©ã“ã«é€²ã‚“ã ã‹ã‚’ãƒ™ã‚¯ãƒˆãƒ«ã§å–å¾—
+            latestPos = transform.position;  //å‰å›žã®Positionã®æ›´æ–°
 
-            //ƒxƒNƒgƒ‹‚Ì‘å‚«‚³‚ª0.01ˆÈã‚ÌŽž‚ÉŒü‚«‚ð•Ï‚¦‚éˆ—‚ð‚·‚é
+            //ãƒ™ã‚¯ãƒˆãƒ«ã®å¤§ãã•ãŒ0.01ä»¥ä¸Šã®æ™‚ã«å‘ãã‚’å¤‰ãˆã‚‹å‡¦ç†ã‚’ã™ã‚‹
             if (diff.magnitude > 0.01f)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(diff); //Œü‚«‚ð•ÏX‚·‚é
+                Quaternion targetRotation = Quaternion.LookRotation(diff); //å‘ãã‚’å¤‰æ›´ã™ã‚‹
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5);
             }
         }
 
 
-        //ƒ‰ƒ“ƒ_ƒ€‚ÈˆÊ’u‚ÉˆÚ“®‚·‚é
+        //ãƒ©ãƒ³ãƒ€ãƒ ãªä½ç½®ã«ç§»å‹•ã™ã‚‹
         moveTimer += Time.deltaTime;
 
         if (lastPosition == transform.position && isMove == true)
@@ -112,7 +112,7 @@ public class EnemyControl : MonoBehaviour
             while (true)
             {
                 randomPos = RandomPosition.RandomPos(rangeA, rangeB);
-                if (Vector3.Distance(randomPos, player.transform.position) > 5f)
+                if (Vector3.Distance(randomPos, player.transform.position) > 5f && randomPos.y > 3f)
                 {
                     break;
                 }
@@ -164,10 +164,10 @@ public class EnemyControl : MonoBehaviour
     {
         smoothTime = cautionSmoothTime;
         interval = cautionInterval;
-        //ƒvƒŒƒCƒ„[‚Ì•û‚ðŒü‚­
+        //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ–¹ã‚’å‘ã
         this.transform.LookAt(player.transform);
 
-        //‚±‚±‚©‚çUŒ‚
+        //ã“ã“ã‹ã‚‰æ”»æ’ƒ
         attackTimer += Time.deltaTime;
 
         if (!isMove && attackTimer >= normalInterval)

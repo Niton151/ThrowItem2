@@ -5,14 +5,14 @@ using UnityEngine.AI;
 
 public class EnemyControl2 : MonoBehaviour
 {
-    [Header("ƒXƒe[ƒ^ƒX")]
+    [Header("ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹")]
     [SerializeField]
     private float maxHp;
 
     [SerializeField]
     private float hp;
 
-    [Header("ˆÚ“®—p•Ï”")]
+    [Header("ç§»å‹•ç”¨å¤‰æ•°")]
 
     private Vector3 randomPos;
 
@@ -31,8 +31,8 @@ public class EnemyControl2 : MonoBehaviour
     [SerializeField]
     private GameObject exprode;
 
-    //‚±‚±‚©‚çUŒ‚—p•Ï”
-    [Header("UŒ‚—p•Ï”")]
+    //ã“ã“ã‹ã‚‰æ”»æ’ƒç”¨å¤‰æ•°
+    [Header("æ”»æ’ƒç”¨å¤‰æ•°")]
 
     private NavMeshAgent agent;
 
@@ -40,6 +40,8 @@ public class EnemyControl2 : MonoBehaviour
 
     [SerializeField]
     private GameObject fire;
+
+    [SerializeField] private ParticleSystem damageFX;
 
     void Start()
     {
@@ -70,6 +72,7 @@ public class EnemyControl2 : MonoBehaviour
 
     public void EnemyAttacked(float damage)
     {
+        damageFX.Play();
         this.hp -= damage;
         if (this.hp <= 0)
         {
@@ -101,12 +104,12 @@ public class EnemyControl2 : MonoBehaviour
 
     private void AttackMode()
     {
-        //ƒvƒŒƒCƒ„[‚Ì•û‚ğŒü‚­
+        //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ–¹ã‚’å‘ã
         this.transform.LookAt(playerPos.transform);
         agent.destination = playerPos.transform.position;
         anim.SetBool("isForward", true);
 
-        //‚±‚±‚©‚çUŒ‚
+        //ã“ã“ã‹ã‚‰æ”»æ’ƒ
         if (Vector3.Distance(this.transform.position, playerPos.transform.position) < 3f)
         {
             anim.SetBool("isForward", false);
@@ -135,15 +138,15 @@ public class EnemyControl2 : MonoBehaviour
 
     private void StopHere()
     {
-        //NavMeshAgent‚ğ~‚ß‚é
+        //NavMeshAgentã‚’æ­¢ã‚ã‚‹
         agent.isStopped = true;
-        //‘Ò‚¿ŠÔ‚ğ”‚¦‚é
+        //å¾…ã¡æ™‚é–“ã‚’æ•°ãˆã‚‹
         time += Time.deltaTime;
 
-        //‘Ò‚¿ŠÔ‚ªİ’è‚³‚ê‚½”’l‚ğ’´‚¦‚é‚Æ”­“®
+        //å¾…ã¡æ™‚é–“ãŒè¨­å®šã•ã‚ŒãŸæ•°å€¤ã‚’è¶…ãˆã‚‹ã¨ç™ºå‹•
         if (time > waitTime)
         {
-            //–Ú•W’n“_‚ğİ’è‚µ’¼‚·
+            //ç›®æ¨™åœ°ç‚¹ã‚’è¨­å®šã—ç›´ã™
             GotoNextPoint();
             time = 0;
         }

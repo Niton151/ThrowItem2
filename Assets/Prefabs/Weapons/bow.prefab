@@ -894,6 +894,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937bd506d2d332642b071389ead7496f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stringSound: {fileID: 8300000, guid: bdafa0939bb609040ac116aadf25f2a9, type: 3}
+  shootSound: {fileID: 8300000, guid: d7572d3bf2c6f2d49945fd498919bbc6, type: 3}
 --- !u!1 &6086487877971354994
 GameObject:
   m_ObjectHideFlags: 0
