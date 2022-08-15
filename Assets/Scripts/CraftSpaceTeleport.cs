@@ -35,7 +35,7 @@ public class CraftSpaceTeleport : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(OVRInput.GetDown(OVRInput.RawButton.B) && other.gameObject.CompareTag("Hand"))
+        if(/*OVRInput.GetDown(OVRInput.RawButton.B) && */other.gameObject.CompareTag("Hand"))
         {
             if (BaseToCraft)
             {

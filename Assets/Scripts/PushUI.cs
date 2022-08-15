@@ -13,6 +13,8 @@ public class PushUI : MonoBehaviour
     private bool isStop;
 
     private float moveJudge = 25f;
+
+    private float timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class PushUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        timer += Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,9 +50,10 @@ public class PushUI : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Finger") && isStop)
+        if (other.gameObject.CompareTag("Finger") && isStop && timer >= 0.5f)
         {
             this.GetComponentInChildren<RecipeSystem>().CraftItem();
+            timer = 0;
         }
     }
 }

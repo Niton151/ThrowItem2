@@ -136,8 +136,15 @@ public class EnemyControl : MonoBehaviour
 
     private void Attack()
     {
-        nomalMuzzle.GetComponent<EnemyLRW>().CreatBullet();
-        attackTimer = 0;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        {
+            if (hit.collider.gameObject.layer == player.layer)
+            {
+                nomalMuzzle.GetComponent<EnemyLRW>().CreatBullet();
+                attackTimer = 0;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)

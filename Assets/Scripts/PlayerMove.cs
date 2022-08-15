@@ -21,7 +21,6 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
         _input = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
-        Debug.Log(_input);
     }
 
     void FixedUpdate()

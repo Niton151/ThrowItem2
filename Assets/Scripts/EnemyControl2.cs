@@ -43,8 +43,12 @@ public class EnemyControl2 : MonoBehaviour
 
     [SerializeField] private ParticleSystem damageFX;
 
+    [Header("サウンド")] private AudioSource _audioSource;
+    [SerializeField] private AudioClip footSound;
+
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         this.hp = this.maxHp;
         playerPos = GameObject.Find("PlayerPos");
         randomPos = RandomPosition.RandomPos(moveRange);
@@ -112,15 +116,22 @@ public class EnemyControl2 : MonoBehaviour
         //ここから攻撃
         if (Vector3.Distance(this.transform.position, playerPos.transform.position) < 3f)
         {
+            _audioSource.Stop();
             anim.SetBool("isForward", false);
             agent.isStopped = true;
             Attack();
         }
-        else 
+        else
         {
+            if (!_audioSource.isPlaying)
+            {
+                _audioSource.pitch = 1.0f + Random.Range(-0.1f, 0.1f);
+                _audioSource.PlayOneShot(footSound);   
+            }
             anim.SetBool("isAttack", false);
             agent.isStopped = false;
             fire.SetActive(false);
+            
         }       
     }
 

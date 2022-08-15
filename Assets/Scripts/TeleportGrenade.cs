@@ -45,6 +45,9 @@ public class TeleportGrenade : MonoBehaviour
     [SerializeField]
     private AudioClip holeSound;
 
+    [SerializeField] private OVRGrabber LHand;
+    [SerializeField] private OVRGrabber RHand;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -63,7 +66,7 @@ public class TeleportGrenade : MonoBehaviour
                     TeleportItems();
                 }
 
-                if (OVRInput.GetDown(OVRInput.RawButton.B) || Input.GetKeyDown(KeyCode.Space))
+                if (timer >= runTime * 100 + 10)
                 {
                     ReturnBase(true);
                 }
@@ -75,7 +78,7 @@ public class TeleportGrenade : MonoBehaviour
             rb.isKinematic = true;
             this.transform.rotation = Quaternion.Euler(Vector3.zero);
             Tutorial.IntoIsGround(true);
-            if ((OVRInput.GetDown(OVRInput.RawButton.B) || Input.GetKeyDown(KeyCode.Space)) && isRunning == false)
+            if ((OVRInput.GetDown(OVRInput.RawButton.B) || Input.GetKeyDown(KeyCode.Space)) && isRunning == false && (RHand.grabbedObject != null || LHand.grabbedObject != null))
             {
                 TeleportPlayer();
                 itemSpawn.GetComponent<ItemSpawn>().Spawn(0);

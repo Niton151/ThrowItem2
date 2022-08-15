@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8348aca930e6c9045a479051bc958f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredQuantity: 1e000000000000000000000000000000000000000a000000
+  requiredQuantity: 14000000000000000000000000000000000000000a000000
   craftItemName: "\u5F13"
   craftItemImage: {fileID: 21300000, guid: 0334079d4e0905d4d8800f664662690b, type: 3}
   craftItem: {fileID: 2300994134620304022, guid: ad4250cef402ff64e82f09d53468393b,
