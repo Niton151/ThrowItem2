@@ -24,13 +24,16 @@ public class CraftSpaceTeleport : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (TeleportGrenade.returnBaseCount == 1)
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     private void OnTriggerStay(Collider other)

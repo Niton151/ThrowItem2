@@ -45,7 +45,6 @@ public class PlayerControl : MonoBehaviour
             if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
             {
                 RhandObj.gameObject.GetComponent<LongRangeWeapon>().MagCheck();
-                Debug.Log("magcheck!");
             }
 
             if (OVRInput.GetDown(OVRInput.RawButton.A))
@@ -92,6 +91,11 @@ public class PlayerControl : MonoBehaviour
         if (hp >= maxHp)
         {
             hp = maxHp;
+        }
+
+        if (hp <= 20 && Tutorial.returnBaseCount == 0)
+        {
+            hp = 20;
         }
     }
 

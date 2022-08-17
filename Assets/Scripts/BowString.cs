@@ -37,33 +37,34 @@ public class BowString : MonoBehaviour
             }
         }
 
-        if (this.transform.localPosition.y > -0.01f && isMove == true)
+        if (this.transform.localPosition.y > -0.01f && isMove)
         {
             isMove = false;
             this.transform.localPosition = new Vector3(0f, -0.01f, 0f);
+            audioSource.Stop();
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Arrow"))
+        if (other.gameObject.CompareTag("Arrow") && other.transform.parent == null && !isMove)
         {
             arrow = other.gameObject;
             grabbable = arrow.GetComponent<OVRGrabbable>();
             isPullString = true;
             isMove = true;
-            audioSource.loop = true;
             audioSource.Play();
         }
     }
 
     private void BowShoot()
     {
+        var rb = arrow.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
         initialSpeed = -(-0.01f + this.transform.localPosition.y);
-        arrow.GetComponent<Rigidbody>().AddRelativeForce(0f, 0f, initialSpeed * 10000);
+        rb.AddRelativeForce(0f, 0f, initialSpeed * 500, ForceMode.Impulse);
         isPullString = false;
-        //audioSource.volume = 1f;
-        audioSource.loop = false;
-        audioSource.PlayOneShot(shootSound);
+
+        arrow.GetComponent<AudioSource>().PlayOneShot(shootSound);
     }
 }

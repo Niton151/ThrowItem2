@@ -94,7 +94,7 @@ public class Tutorial : MonoBehaviour
 
     private int latestIndex = 0;
 
-    private static int returnBaseCount = 0;
+    public static int returnBaseCount = 0;
 
     [SerializeField]
     private GameObject canvas;
@@ -126,8 +126,6 @@ public class Tutorial : MonoBehaviour
 
     private static bool isReturnBase;
 
-    private static bool isMakeGun = false;
-
     private bool isAddEnemy = false;
 
     public bool isTutorial;
@@ -138,6 +136,8 @@ public class Tutorial : MonoBehaviour
     private Toggle toggle;
 
     private GameObject uiHelper;
+    
+    [SerializeField] private GameObject portal;
 
     void Start()
     {
@@ -178,11 +178,6 @@ public class Tutorial : MonoBehaviour
         {
             canvas.SetActive(false);
             tellGre.SetActive(true);
-            if(isAddEnemy == false && isMakeGun == true)
-            {
-                enemySpawn.GetComponent<ItemSpawn>().AddEnemy();
-                isAddEnemy = true;
-            }
         }
     }
 
@@ -215,7 +210,7 @@ public class Tutorial : MonoBehaviour
             else if (latestIndex == 16)
             {
                 ActiveImage(6);
-                if (OVRInput.GetDown(OVRInput.RawButton.B) || Input.GetKeyDown(KeyCode.Space))
+                if (player.transform.position.y < 20)
                 {
                     GoMessage();
                     EnemyControl.isTimeStop = true;
@@ -226,8 +221,7 @@ public class Tutorial : MonoBehaviour
                 //ActiveImage(7);
                 if (isRunning == true)
                 {
-                    interval = 10;
-                    latestIndex = 21;
+                    GoMessage();
                 }
             }
             else if (latestIndex == 21)
@@ -244,8 +238,9 @@ public class Tutorial : MonoBehaviour
             {
                 image.enabled = false;
                 enemySpawn.GetComponent<ItemSpawn>().AddEnemy();
+                isAddEnemy = true;
             }
-            else
+            else if(latestIndex < 26)
             {
                 image.enabled = false;
                 GoMessage();
@@ -261,6 +256,7 @@ public class Tutorial : MonoBehaviour
             text.text = messsage[latestIndex];
             if(latestIndex == 26)
             {
+                portal.SetActive(true);
                 if(isCraftTell == true)
                 {
                     GoMessage();
@@ -269,8 +265,7 @@ public class Tutorial : MonoBehaviour
             else if(latestIndex == 35)
             {
                 ActiveImage(8);
-                interval = 10;
-                latestIndex = 36;
+                GoMessage();
             }
             else if(latestIndex == 36)
             {
@@ -293,15 +288,14 @@ public class Tutorial : MonoBehaviour
             else if(latestIndex == 38)
             {
                 ActiveImage(10);
-                interval = 10;
-                latestIndex = 39;
+                GoMessage();
             }
             else if(latestIndex == 39)
             {
                 image.enabled = false;
-                latestIndex = 40;
+                GoMessage();
             }
-            else if(latestIndex == 41)
+            else if(latestIndex == 43)
             {
                 canvas.SetActive(false);
                 if (isReturnBase)
@@ -310,17 +304,13 @@ public class Tutorial : MonoBehaviour
                     GoMessage();
                 }
             }
-            else if(latestIndex == 42)
-            {
-                GoMessage();
-            }
             else if(latestIndex == 46)
             {
                 canvas.SetActive(false);
                 GoMessage();
             }
 
-            else
+            else if(latestIndex < 46)
             {
                 image.enabled = false;
                 GoMessage();
@@ -343,7 +333,7 @@ public class Tutorial : MonoBehaviour
             {
                 canvas.SetActive(false);
             }
-            else
+            else if(latestIndex < 51)
             {
                 image.enabled = false;
                 GoMessage();
@@ -397,6 +387,8 @@ public class Tutorial : MonoBehaviour
         timer = 0;
         interval = messsage[latestIndex].Length / 4;
         latestIndex++;
+        
+        Debug.Log(latestIndex);
     }
 
     public void GameStart()
@@ -404,10 +396,5 @@ public class Tutorial : MonoBehaviour
         isStart = true;
         toggle.gameObject.transform.root.gameObject.SetActive(false);
         uiHelper.SetActive(false);
-    }
-
-    public static void IntoIsMakeGun(bool img)
-    {
-        isMakeGun = img;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TeleportGrenade : MonoBehaviour
 {
-    private static int returnBaseCount = 0;
+    public static int returnBaseCount = 0;
 
     Rigidbody rb; 
 
@@ -66,14 +66,14 @@ public class TeleportGrenade : MonoBehaviour
                     TeleportItems();
                 }
 
-                if (timer >= runTime * 100 + 10)
+                if (!blackHole.activeSelf)
                 {
                     ReturnBase(true);
                 }
             }
         }   
-
-        if(this.gameObject.transform.position.y <= 3)
+        
+        if(this.gameObject.transform.position.y <= 3f || (rb.velocity.magnitude < 1f && gameObject.transform.position.y <= 20f))
         {
             rb.isKinematic = true;
             this.transform.rotation = Quaternion.Euler(Vector3.zero);
@@ -87,8 +87,9 @@ public class TeleportGrenade : MonoBehaviour
             }
         }
 
-        if (Mathf.Abs(transform.position.x) > 100 || Mathf.Abs(transform.position.x) > 1000 || Mathf.Abs(transform.position.z) > 1000)
+        if (Mathf.Abs(transform.position.x) > 1000 || Mathf.Abs(transform.position.y) > 200 || Mathf.Abs(transform.position.z) > 1000)
         {
+            rb.velocity = Vector3.zero;
             this.transform.position = basePos.position + new Vector3(1, 1, 1);
         }
     }
@@ -108,7 +109,7 @@ public class TeleportGrenade : MonoBehaviour
     {
         enemySpawn.GetComponent<ItemSpawn>().Spawn(2);
         audioSource.PlayOneShot(teleportSound);
-        this.transform.position = basePos.position + new Vector3(1, 1, 1);
+        this.transform.position = new Vector3(21.61f, 89f, 157.64f);
         player.transform.position = basePos.position;
         rb.isKinematic = false;
         timer = 0;
@@ -122,7 +123,7 @@ public class TeleportGrenade : MonoBehaviour
         isBase = true;
         isRunning = false;
         Tutorial.IntoIsBase(isBase);
-        foreach(var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        foreach(var enemy in GameObject.FindGameObjectsWithTag("EnemyCore"))
         {
             Destroy(enemy);
         }

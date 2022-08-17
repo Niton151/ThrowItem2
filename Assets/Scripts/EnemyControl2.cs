@@ -46,8 +46,11 @@ public class EnemyControl2 : MonoBehaviour
     [Header("サウンド")] private AudioSource _audioSource;
     [SerializeField] private AudioClip footSound;
 
+    private Rigidbody _rb;
+
     void Start()
     {
+        _rb = GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
         this.hp = this.maxHp;
         playerPos = GameObject.Find("PlayerPos");
@@ -76,6 +79,7 @@ public class EnemyControl2 : MonoBehaviour
 
     public void EnemyAttacked(float damage)
     {
+        _rb.AddForce((transform.position - playerPos.transform.position) * 20f, ForceMode.Impulse);
         damageFX.Play();
         this.hp -= damage;
         if (this.hp <= 0)

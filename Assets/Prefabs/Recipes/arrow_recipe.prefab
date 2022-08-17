@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8348aca930e6c9045a479051bc958f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredQuantity: 050000000500000000000000000000000000000000000000
+  requiredQuantity: 0a0000000a00000000000000000000000000000000000000
   craftItemName: "\u77E2"
   craftItemImage: {fileID: 21300000, guid: 3d04c70de74be77429f44bc542fe0eff, type: 3}
-  craftItem: {fileID: 1085118855778055993, guid: e76ed20e088f33a448b551f56d6f3f71,
+  craftItem: {fileID: 3983259847139383620, guid: c8e19ab82ae23174a887fc6185d83fbf,
     type: 3}
   craftUI: {fileID: 6903084565919174475, guid: 38ba88a88c921c74e92d426140a46b67, type: 3}
   craftSound: {fileID: 8300000, guid: 80524b67fb2202d4e84d94aea40d5921, type: 3}

@@ -15,17 +15,14 @@ public class CraftSystem : MonoBehaviour
     private Transform recipeParent;
 
     private List<GameObject> reserveRecipes = new List<GameObject>();
+    
+    [SerializeField] private GameObject handgunRecipe;
+    [SerializeField] private GameObject handgunMagRecipe;
     void Start()
     {
         for(int i = 0; i < recipes.Count; i++)
         {
-            GameObject obj = Instantiate(recipeUI);
-            obj.transform.SetParent(recipeParent, false);
-            GameObject obj2 = Instantiate(recipes[i]);
-            reserveRecipes.Add(obj2);
-            obj2.transform.SetParent(obj.transform, false);
-            obj.transform.Find("item_name").GetComponent<Text>().text = recipes[i].GetComponent<RecipeSystem>().GetCraftItemName();
-            obj.transform.Find("item_image").GetComponent<Image>().sprite = recipes[i].GetComponent<RecipeSystem>().GetCraftItemSprite();
+            AddRecipe(recipes[i]);
         }
         
     }
@@ -33,7 +30,11 @@ public class CraftSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Tutorial.returnBaseCount == 2)
+        {
+            AddRecipe(handgunRecipe);
+            AddRecipe(handgunMagRecipe);
+        }
     }
 
     public void AccessAllRecipes()
@@ -42,5 +43,16 @@ public class CraftSystem : MonoBehaviour
         {
             recipe.GetComponent<RecipeSystem>().PrintQuantity();
         }
+    }
+
+    private void AddRecipe(GameObject recipe)
+    {
+        GameObject obj = Instantiate(recipeUI);
+        obj.transform.SetParent(recipeParent, false);
+        GameObject obj2 = Instantiate(recipe);
+        reserveRecipes.Add(obj2);
+        obj2.transform.SetParent(obj.transform, false);
+        obj.transform.Find("item_name").GetComponent<Text>().text = recipe.GetComponent<RecipeSystem>().GetCraftItemName();
+        obj.transform.Find("item_image").GetComponent<Image>().sprite = recipe.GetComponent<RecipeSystem>().GetCraftItemSprite();
     }
 }

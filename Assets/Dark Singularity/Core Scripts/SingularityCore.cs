@@ -9,6 +9,7 @@ public class SingularityCore : MonoBehaviour
     void OnTriggerStay (Collider other) {
         if(other.transform.root.gameObject.GetComponent<SingularityPullable>())
         {
+            other.transform.root.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             other.transform.root.gameObject.transform.position = craftPos.position + new Vector3(0, 1f, 0);
         }
     }

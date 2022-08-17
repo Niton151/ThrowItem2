@@ -70,10 +70,6 @@ public class RecipeSystem : MonoBehaviour
             {
                 Tutorial.IntoIsCraftSyringe(true);
             }
-            if (craftItemName == "ハンドガン")
-            {
-                Tutorial.IntoIsMakeGun(true);
-            }
 
             audioSource.PlayOneShot(craftSound);
             for(int i = 0; i < haveQuantity.Length; i++)

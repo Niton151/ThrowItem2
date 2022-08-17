@@ -26,7 +26,7 @@ public class RandomPosition : MonoBehaviour
 
     public static Object RandomInList(List<GameObject> list)
     {
-        return list[Random.Range(0, list.Count)];
+        return list[Random.Range(0, list.Count-1)];
     }
 
     public static Vector3 RandomPos(float radius)
