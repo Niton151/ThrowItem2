@@ -16,8 +16,6 @@ public class CraftSystem : MonoBehaviour
 
     private List<GameObject> reserveRecipes = new List<GameObject>();
     
-    [SerializeField] private GameObject handgunRecipe;
-    [SerializeField] private GameObject handgunMagRecipe;
     void Start()
     {
         for(int i = 0; i < recipes.Count; i++)
@@ -25,16 +23,6 @@ public class CraftSystem : MonoBehaviour
             AddRecipe(recipes[i]);
         }
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Tutorial.returnBaseCount == 2)
-        {
-            AddRecipe(handgunRecipe);
-            AddRecipe(handgunMagRecipe);
-        }
     }
 
     public void AccessAllRecipes()

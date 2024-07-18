@@ -78,5 +78,11 @@ public class ItemSpawn : MonoBehaviour
     public void AddEnemy()
     {
         items.Add(enemy);
+        interval = 10;
+    }
+
+    public void RemoveEnemy(int i)
+    {
+        items.RemoveAt(i);
     }
 }

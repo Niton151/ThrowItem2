@@ -79,7 +79,7 @@ public class EnemyControl2 : MonoBehaviour
 
     public void EnemyAttacked(float damage)
     {
-        _rb.AddForce((transform.position - playerPos.transform.position) * 20f, ForceMode.Impulse);
+        _rb.AddForce((transform.position - playerPos.transform.position).normalized * 20f, ForceMode.Impulse);
         damageFX.Play();
         this.hp -= damage;
         if (this.hp <= 0)

@@ -17,7 +17,7 @@ public class TeleportGrenade : MonoBehaviour
 
     private float timer = 0;
 
-    private float runTime = 0.9f;
+    private float runTime = 0.5f;
 
     [SerializeField]
     private Transform basePos;

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8348aca930e6c9045a479051bc958f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredQuantity: 0a0000001400000000000000000000000000000000000000
+  requiredQuantity: 0a0000000a00000000000000000000000000000000000000
   craftItemName: "\u30CF\u30F3\u30C9\u30AC\u30F3\u30DE\u30AC\u30B8\u30F3"
   craftItemImage: {fileID: 21300000, guid: 646f08c597ce60a40925b5de4f156b6a, type: 3}
   craftItem: {fileID: 3756237556405446418, guid: 758e8e7d21158c24f91979655dea02f2,
@@ -53,6 +53,7 @@ MonoBehaviour:
   craftSound: {fileID: 8300000, guid: 80524b67fb2202d4e84d94aea40d5921, type: 3}
   craftPos: {fileID: 7917931819088525727, guid: ef46fb58a0e488e4e805c979d3cfe479,
     type: 3}
+  craftEffect: {fileID: 100004, guid: 417d95259df90e4488eb927fde45cba3, type: 3}
 --- !u!82 &1890046191534160055
 AudioSource:
   m_ObjectHideFlags: 0

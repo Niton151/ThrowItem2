@@ -237,8 +237,12 @@ public class Tutorial : MonoBehaviour
             else if (latestIndex == 23)
             {
                 image.enabled = false;
-                enemySpawn.GetComponent<ItemSpawn>().AddEnemy();
-                isAddEnemy = true;
+                if (!isAddEnemy)
+                {
+                    enemySpawn.GetComponent<ItemSpawn>().AddEnemy(); 
+                    enemySpawn.GetComponent<ItemSpawn>().RemoveEnemy(0);
+                    isAddEnemy = true;
+                }
             }
             else if(latestIndex < 26)
             {

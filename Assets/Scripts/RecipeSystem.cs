@@ -39,32 +39,22 @@ public class RecipeSystem : MonoBehaviour
     [SerializeField]
     private Transform craftPos;
 
-    private ParticleSystem[] craftEffect;
+    [SerializeField]
+    private GameObject craftEffect;
     
     void Start()
     {
         supervisor = GameObject.Find("SupervisorObj").GetComponent<Supervisor>();
         craftSystem = GameObject.Find("CraftSystem").GetComponent<CraftSystem>();
-        craftEffect = craftPos.gameObject.GetComponentsInChildren<ParticleSystem>();
         audioSource = GetComponent<AudioSource>();
         haveQuantity = supervisor.GetItemCount();
         CreatRecipe();
-    }
-
-    
-    void Update()
-    {
-        
     }
 
     public void CraftItem()
     {      
         if (JudgeCraftable() == true) { 
             Instantiate(craftItem, craftPos.position + new Vector3(0, 1, 0), Quaternion.identity);
-            foreach (var p in craftEffect)
-            {
-                p.Play();
-            }
 
             if (craftItemName == "注射器")
             {
@@ -77,8 +67,17 @@ public class RecipeSystem : MonoBehaviour
                 haveQuantity[i] -= requiredQuantity[i];
             }
             craftSystem.AccessAllRecipes();
+            
+            craftEffect.SetActive(true);
+            StartCoroutine(EffectOff());
         }
         
+    }
+
+    IEnumerator EffectOff()
+    {
+        yield return new WaitForSeconds(2);
+        craftEffect.SetActive(false);
     }
 
     public void CreatRecipe()

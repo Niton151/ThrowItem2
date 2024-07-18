@@ -53,6 +53,7 @@ MonoBehaviour:
   craftSound: {fileID: 8300000, guid: 80524b67fb2202d4e84d94aea40d5921, type: 3}
   craftPos: {fileID: 7917931819088525727, guid: ef46fb58a0e488e4e805c979d3cfe479,
     type: 3}
+  craftEffect: {fileID: 100004, guid: 417d95259df90e4488eb927fde45cba3, type: 3}
 --- !u!82 &-5671705562590530239
 AudioSource:
   m_ObjectHideFlags: 0

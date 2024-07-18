@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 2299329508806773086}
   - component: {fileID: 3133473230813922470}
   - component: {fileID: 5120727881758848009}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Wooden Bow_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
